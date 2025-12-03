@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
@@ -95,6 +96,12 @@
         -moz-osx-font-smoothing: grayscale;
         background-color: #0a0a0a;
         color: #ffffff;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      body.light {
+        background-color: #ffffff;
+        color: #1a1a1a;
       }
 
       code {
@@ -181,7 +188,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-[#0a0a0a] text-white antialiased">
+  <body class="bg-[#0a0a0a] text-white antialiased" style="background-color: #0a0a0a; color: #ffffff; margin: 0; padding: 0;">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

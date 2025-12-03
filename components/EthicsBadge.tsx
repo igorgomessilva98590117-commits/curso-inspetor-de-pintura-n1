@@ -23,12 +23,12 @@ export const EthicsBadge: React.FC = () => {
             onClick={() => setIsModalOpen(false)}
           >
             <div 
-              className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl"
+              className="bg-[#0a0a0a] dark:bg-white border border-[#1a1a1a] dark:border-slate-200 rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-slate-400 dark:text-[#666666] hover:text-white dark:hover:text-[#333333] transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -38,22 +38,22 @@ export const EthicsBadge: React.FC = () => {
                   <Shield className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white mb-1">Selo de Integridade</h2>
-                  <p className="text-slate-400 text-sm">Compromisso Ético</p>
+                  <h2 className="text-2xl font-bold text-white dark:text-[#333333] mb-1 transition-colors">Selo de Integridade</h2>
+                  <p className="text-slate-400 dark:text-[#666666] text-sm transition-colors">Compromisso Ético</p>
                 </div>
               </div>
 
-              <div className="prose prose-invert max-w-none">
-                <p className="text-slate-300 leading-relaxed text-lg mb-4">
+              <div className="prose prose-invert dark:prose-slate max-w-none">
+                <p className="text-slate-300 dark:text-[#4A4A4A] leading-relaxed text-lg mb-4 transition-colors">
                   A integridade é a ferramenta mais importante do inspetor. Um relatório falso pode custar vidas e milhões em prejuízos.
                 </p>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-slate-300 dark:text-[#4A4A4A] leading-relaxed transition-colors">
                   Aqui, aprendemos a técnica correta e a ética inegociável. Transformamos normas técnicas em poder de decisão, prevenindo falhas, salvando milhões em ativos e protegendo vidas.
                 </p>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-[#1a1a1a]">
-                <p className="text-amber-500 font-semibold text-sm">
+              <div className="mt-6 pt-6 border-t border-[#1a1a1a] dark:border-slate-200 transition-colors">
+                <p className="text-amber-500 dark:text-[#FF6700] font-semibold text-sm transition-colors">
                   Mais que um Inspetor, um Guardião da Integridade.
                 </p>
               </div>

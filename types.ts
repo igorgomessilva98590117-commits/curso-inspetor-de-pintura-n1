@@ -4,7 +4,8 @@ export enum Tab {
   PRACTICAL = 'PRACTICAL',
   LAB = 'LAB',
   CASES = 'CASES',
-  DOCS = 'DOCS'
+  DOCS = 'DOCS',
+  MENTOR = 'MENTOR'
 }
 
 export interface CaseStudy {
