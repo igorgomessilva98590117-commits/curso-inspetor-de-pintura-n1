@@ -9,8 +9,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
       
-      {/* Navbar Transparente */}
-      <nav className="fixed w-full z-50 top-0 px-6 py-6 backdrop-blur-sm border-b border-white/5 bg-black/20">
+      {/* Navbar Transparente com Gradiente Suave e Máscara de Blur */}
+      <nav 
+        className="fixed w-full z-50 top-0 px-6 py-6 backdrop-blur-md bg-gradient-to-b from-black/90 via-black/60 to-transparent transition-all duration-300"
+        style={{
+          maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+        }}
+      >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
@@ -53,7 +59,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
             Tecnologia, prática e conformidade técnica em um só lugar.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <button 
               onClick={onLoginClick}
               className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-orange-600/20 transition-all duration-300 hover:translate-y-[-2px] flex items-center justify-center gap-2"
@@ -65,6 +71,18 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
               Ver Ementa
               <ArrowRight className="w-5 h-5" />
             </button>
+          </div>
+
+          {/* Video Section */}
+          <div className="relative w-full max-w-5xl mx-auto aspect-video bg-black/50 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-orange-500/10 backdrop-blur-sm group">
+            <iframe
+              className="w-full h-full object-cover"
+              src="https://www.youtube.com/embed/LGD5VHKKXr4?rel=0"
+              title="Vídeo Introdutório Inspetor Master"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </header>
