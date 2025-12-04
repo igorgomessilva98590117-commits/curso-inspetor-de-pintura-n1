@@ -192,6 +192,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (error.message.includes('Password should be')) {
           return { success: false, error: 'A senha não atende aos requisitos mínimos.' };
         }
+        if (error.message.includes('Error sending confirmation')) {
+          // Cadastro foi feito, mas email não foi enviado - permitir login mesmo assim
+          return { success: true, error: 'Conta criada! Você já pode fazer login.' };
+        }
         return { success: false, error: error.message };
       }
 
