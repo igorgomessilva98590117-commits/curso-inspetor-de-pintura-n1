@@ -5,11 +5,13 @@ interface User {
   id?: string;
   email: string;
   name?: string;
+  avatar?: string;
 }
 
 interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  loginWithGoogle: () => Promise<{ success: boolean; error?: string }>;
   register: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   user: User | null;
@@ -41,7 +43,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           setUser({
             id: session.user.id,
             email: session.user.email || '',
-            name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
+            name: session.user.user_metadata?.name || session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'Usuário',
+            avatar: session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture,
           });
         } else {
           // Verificar sessão local (admin offline)
@@ -72,8 +75,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser({
           id: session.user.id,
           email: session.user.email || '',
-          name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
+          name: session.user.user_metadata?.name || session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'Usuário',
+          avatar: session.user.user_metadata?.avatar_url || session.user.user_metadata?.picture,
         });
+        setIsLoading(false);
       } else if (event === 'SIGNED_OUT') {
         // Não limpar se for admin local
         const localUser = localStorage.getItem('inspetor_master_user');
@@ -148,6 +153,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const loginWithGoogle = async (): Promise<{ success: boolean; error?: string }> => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        },
+      });
+
+      if (error) {
+        console.error('Erro no login com Google:', error);
+        return { success: false, error: 'Erro ao conectar com Google. Tente novamente.' };
+      }
+
+      // O redirecionamento será feito automaticamente pelo Supabase
+      return { success: true };
+    } catch (error) {
+      console.error('Erro durante login com Google:', error);
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
+    }
+  };
+
   const register = async (email: string, password: string, name: string): Promise<{ success: boolean; error?: string }> => {
     try {
       // Validação de entrada
@@ -191,6 +218,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
         if (error.message.includes('Password should be')) {
           return { success: false, error: 'A senha não atende aos requisitos mínimos.' };
+        }
+        if (error.message.includes('Error sending confirmation')) {
+          // Cadastro foi feito, mas email não foi enviado - permitir login mesmo assim
+          return { success: true, error: 'Conta criada! Você já pode fazer login.' };
         }
         return { success: false, error: error.message };
       }
@@ -248,7 +279,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, register, logout, user, isLoading }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, loginWithGoogle, register, logout, user, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
