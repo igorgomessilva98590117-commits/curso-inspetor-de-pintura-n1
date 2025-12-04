@@ -77,7 +77,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onLoginClick }) => {
           <div className="relative w-full max-w-5xl mx-auto aspect-video bg-black/50 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-orange-500/10 backdrop-blur-sm group">
             <iframe
               className="w-full h-full object-cover"
-              src="https://www.youtube.com/embed/LGD5VHKKXr4?rel=0"
+              src="https://www.youtube.com/embed/CfgYcLBP9lI?rel=0"
               title="Vídeo Introdutório Inspetor Master"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
