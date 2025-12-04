@@ -15,9 +15,21 @@ import { Mentor } from './views/Mentor';
 import { Users, MessageCircle, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const AppContent: React.FC = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>(Tab.HOME);
   const [showLogin, setShowLogin] = useState(false);
+
+  // Loading enquanto verifica sessão
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin" />
+          <p className="text-gray-400 text-sm">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Se não estiver autenticado
   if (!isAuthenticated) {

@@ -1,208 +1,254 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 interface User {
+  id?: string;
   email: string;
   name?: string;
 }
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
-  register: (email: string, password: string, name: string) => Promise<boolean>;
-  logout: () => void;
+  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  register: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
+  logout: () => Promise<void>;
   user: User | null;
+  isLoading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Usuário admin padrão
+// Usuário admin padrão (acesso offline)
 const ADMIN_CREDENTIALS = {
   email: 'adm',
   password: '123456',
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    // Verificar se há sessão salva com tratamento de erro
-    try {
-      return localStorage.getItem('inspetor_master_auth') === 'true';
-    } catch (error) {
-      console.error('Erro ao acessar localStorage:', error);
-      return false;
-    }
-  });
-  
-  const [user, setUser] = useState<User | null>(() => {
-    try {
-      const savedUser = localStorage.getItem('inspetor_master_user');
-      if (!savedUser) return null;
-      return JSON.parse(savedUser) as User;
-    } catch (error) {
-      console.error('Erro ao carregar usuário do localStorage:', error);
-      // Limpar dados corrompidos
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // Verificar sessão ao carregar
+  useEffect(() => {
+    const checkSession = async () => {
       try {
-        localStorage.removeItem('inspetor_master_user');
-      } catch (e) {
-        // Ignorar erro ao limpar
+        // Verificar sessão do Supabase
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (session?.user) {
+          setIsAuthenticated(true);
+          setUser({
+            id: session.user.id,
+            email: session.user.email || '',
+            name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
+          });
+        } else {
+          // Verificar sessão local (admin offline)
+          const localAuth = localStorage.getItem('inspetor_master_auth');
+          const localUser = localStorage.getItem('inspetor_master_user');
+          
+          if (localAuth === 'true' && localUser) {
+            const parsedUser = JSON.parse(localUser);
+            if (parsedUser.email === 'adm') {
+              setIsAuthenticated(true);
+              setUser(parsedUser);
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Erro ao verificar sessão:', error);
+      } finally {
+        setIsLoading(false);
       }
-      return null;
-    }
-  });
+    };
 
-  // Carregar usuários cadastrados do localStorage com tratamento de erro
-  const getRegisteredUsers = (): { [key: string]: { password: string; name: string } } => {
-    try {
-      const users = localStorage.getItem('inspetor_master_registered_users');
-      if (!users) return {};
-      return JSON.parse(users) as { [key: string]: { password: string; name: string } };
-    } catch (error) {
-      console.error('Erro ao carregar usuários do localStorage:', error);
-      // Limpar dados corrompidos
-      try {
-        localStorage.removeItem('inspetor_master_registered_users');
-      } catch (e) {
-        // Ignorar erro ao limpar
+    checkSession();
+
+    // Listener para mudanças de autenticação do Supabase
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session?.user) {
+        setIsAuthenticated(true);
+        setUser({
+          id: session.user.id,
+          email: session.user.email || '',
+          name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
+        });
+      } else if (event === 'SIGNED_OUT') {
+        // Não limpar se for admin local
+        const localUser = localStorage.getItem('inspetor_master_user');
+        if (localUser) {
+          const parsedUser = JSON.parse(localUser);
+          if (parsedUser.email !== 'adm') {
+            setIsAuthenticated(false);
+            setUser(null);
+          }
+        } else {
+          setIsAuthenticated(false);
+          setUser(null);
+        }
       }
-      return {};
-    }
-  };
+    });
 
-  // Salvar usuários cadastrados no localStorage com tratamento de erro
-  const saveRegisteredUsers = (users: { [key: string]: { password: string; name: string } }): boolean => {
-    try {
-      localStorage.setItem('inspetor_master_registered_users', JSON.stringify(users));
-      return true;
-    } catch (error) {
-      console.error('Erro ao salvar usuários no localStorage:', error);
-      return false;
-    }
-  };
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
     try {
       // Validação de entrada
       if (!email || !password) {
-        return false;
+        return { success: false, error: 'Por favor, preencha todos os campos.' };
       }
 
-      // Normalizar email (case-insensitive e trim)
       const normalizedEmail = email.trim().toLowerCase();
-      
-      // Validar login admin
+
+      // Verificar login admin (offline)
       if (normalizedEmail === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
         const userData: User = { email: 'adm', name: 'Administrador' };
         setIsAuthenticated(true);
         setUser(userData);
-        try {
-          localStorage.setItem('inspetor_master_auth', 'true');
-          localStorage.setItem('inspetor_master_user', JSON.stringify(userData));
-        } catch (storageError) {
-          console.error('Erro ao salvar sessão no localStorage:', storageError);
-          // Continuar mesmo se localStorage falhar
-        }
-        return true;
+        localStorage.setItem('inspetor_master_auth', 'true');
+        localStorage.setItem('inspetor_master_user', JSON.stringify(userData));
+        return { success: true };
       }
 
-      // Validar usuários cadastrados
-      const registeredUsers = getRegisteredUsers();
-      if (registeredUsers[normalizedEmail] && registeredUsers[normalizedEmail].password === password) {
-        const userData: User = { email: normalizedEmail, name: registeredUsers[normalizedEmail].name };
+      // Login via Supabase
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: normalizedEmail,
+        password: password,
+      });
+
+      if (error) {
+        // Traduzir mensagens de erro comuns
+        if (error.message.includes('Invalid login credentials')) {
+          return { success: false, error: 'E-mail ou senha incorretos.' };
+        }
+        if (error.message.includes('Email not confirmed')) {
+          return { success: false, error: 'Por favor, confirme seu e-mail antes de fazer login.' };
+        }
+        return { success: false, error: error.message };
+      }
+
+      if (data.user) {
         setIsAuthenticated(true);
-        setUser(userData);
-        try {
-          localStorage.setItem('inspetor_master_auth', 'true');
-          localStorage.setItem('inspetor_master_user', JSON.stringify(userData));
-        } catch (storageError) {
-          console.error('Erro ao salvar sessão no localStorage:', storageError);
-          // Continuar mesmo se localStorage falhar
-        }
-        return true;
+        setUser({
+          id: data.user.id,
+          email: data.user.email || '',
+          name: data.user.user_metadata?.name || data.user.email?.split('@')[0] || 'Usuário',
+        });
+        return { success: true };
       }
 
-      return false;
+      return { success: false, error: 'Erro desconhecido ao fazer login.' };
     } catch (error) {
       console.error('Erro durante login:', error);
-      return false;
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
     }
   };
 
-  const register = async (email: string, password: string, name: string): Promise<boolean> => {
+  const register = async (email: string, password: string, name: string): Promise<{ success: boolean; error?: string }> => {
     try {
       // Validação de entrada
       if (!email || !password || !name) {
-        return false;
+        return { success: false, error: 'Por favor, preencha todos os campos.' };
       }
 
-      // Validação básica de email
+      // Validação de email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const normalizedEmail = email.trim().toLowerCase();
-      
+
       if (!emailRegex.test(normalizedEmail)) {
-        return false; // Email inválido
+        return { success: false, error: 'Por favor, insira um e-mail válido.' };
       }
 
-      // Validar comprimento mínimo de senha
+      // Validação de senha
       if (password.length < 6) {
-        return false; // Senha muito curta
+        return { success: false, error: 'A senha deve ter pelo menos 6 caracteres.' };
       }
 
-      // Validar se email já existe
-      const registeredUsers = getRegisteredUsers();
-      if (registeredUsers[normalizedEmail]) {
-        return false; // Email já cadastrado
+      // Validação de nome
+      if (name.trim().length < 2) {
+        return { success: false, error: 'O nome deve ter pelo menos 2 caracteres.' };
       }
 
-      // Validar se não é o email admin
-      if (normalizedEmail === ADMIN_CREDENTIALS.email) {
-        return false; // Não pode cadastrar com email admin
+      // Cadastro via Supabase
+      const { data, error } = await supabase.auth.signUp({
+        email: normalizedEmail,
+        password: password,
+        options: {
+          data: {
+            name: name.trim(),
+          },
+        },
+      });
+
+      if (error) {
+        // Traduzir mensagens de erro comuns
+        if (error.message.includes('User already registered')) {
+          return { success: false, error: 'Este e-mail já está cadastrado.' };
+        }
+        if (error.message.includes('Password should be')) {
+          return { success: false, error: 'A senha não atende aos requisitos mínimos.' };
+        }
+        return { success: false, error: error.message };
       }
 
-      // Cadastrar novo usuário
-      registeredUsers[normalizedEmail] = { password, name: name.trim() };
-      const saved = saveRegisteredUsers(registeredUsers);
-      
-      if (!saved) {
-        return false; // Falha ao salvar
+      if (data.user) {
+        // Verificar se precisa confirmar email
+        if (data.user.identities && data.user.identities.length === 0) {
+          return { success: false, error: 'Este e-mail já está cadastrado.' };
+        }
+        
+        // Se o Supabase não exige confirmação de email, fazer login automático
+        if (data.session) {
+          setIsAuthenticated(true);
+          setUser({
+            id: data.user.id,
+            email: data.user.email || '',
+            name: name.trim(),
+          });
+          return { success: true };
+        }
+        
+        // Se precisa confirmar email
+        return { 
+          success: true, 
+          error: 'Cadastro realizado! Verifique seu e-mail para confirmar a conta.' 
+        };
       }
 
-      // Fazer login automaticamente após cadastro
-      const userData: User = { email: normalizedEmail, name: name.trim() };
-      setIsAuthenticated(true);
-      setUser(userData);
-      
-      try {
-        localStorage.setItem('inspetor_master_auth', 'true');
-        localStorage.setItem('inspetor_master_user', JSON.stringify(userData));
-      } catch (storageError) {
-        console.error('Erro ao salvar sessão no localStorage:', storageError);
-        // Continuar mesmo se localStorage falhar
-      }
-
-      return true;
+      return { success: false, error: 'Erro desconhecido ao cadastrar.' };
     } catch (error) {
       console.error('Erro durante cadastro:', error);
-      return false;
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
     try {
+      // Logout do Supabase
+      await supabase.auth.signOut();
+      
+      // Limpar sessão local
+      localStorage.removeItem('inspetor_master_auth');
+      localStorage.removeItem('inspetor_master_user');
+      
       setIsAuthenticated(false);
       setUser(null);
-      try {
-        localStorage.removeItem('inspetor_master_auth');
-        localStorage.removeItem('inspetor_master_user');
-      } catch (storageError) {
-        console.error('Erro ao limpar localStorage:', storageError);
-        // Continuar mesmo se localStorage falhar
-      }
     } catch (error) {
       console.error('Erro durante logout:', error);
+      // Forçar logout mesmo com erro
+      setIsAuthenticated(false);
+      setUser(null);
+      localStorage.removeItem('inspetor_master_auth');
+      localStorage.removeItem('inspetor_master_user');
     }
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, register, logout, user }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, register, logout, user, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
@@ -215,4 +261,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
