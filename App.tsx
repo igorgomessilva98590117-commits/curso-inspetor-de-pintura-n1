@@ -4,6 +4,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LandingPage } from './views/LandingPage';
 import { Login } from './components/Login';
+import { ResetPassword } from './components/ResetPassword';
 import { Sidebar } from './components/Sidebar';
 import { Home } from './views/Home';
 import { Theory } from './views/Theory';
@@ -15,7 +16,7 @@ import { Mentor } from './views/Mentor';
 import { Users, MessageCircle, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const AppContent: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, isRecoveryMode } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>(Tab.HOME);
   const [showLogin, setShowLogin] = useState(false);
 
@@ -29,6 +30,11 @@ const AppContent: React.FC = () => {
         </div>
       </div>
     );
+  }
+
+  // Se estiver no modo de recuperação de senha (veio do link de email)
+  if (isRecoveryMode) {
+    return <ResetPassword />;
   }
 
   // Se não estiver autenticado

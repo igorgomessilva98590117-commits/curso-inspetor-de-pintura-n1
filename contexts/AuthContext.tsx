@@ -11,9 +11,12 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   register: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
+  resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
+  updatePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   user: User | null;
   isLoading: boolean;
+  isRecoveryMode: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -28,6 +31,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isRecoveryMode, setIsRecoveryMode] = useState<boolean>(false);
 
   // Verificar sessão ao carregar
   useEffect(() => {
@@ -67,14 +71,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Listener para mudanças de autenticação do Supabase
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' && session?.user) {
-        setIsAuthenticated(true);
-        setUser({
-          id: session.user.id,
-          email: session.user.email || '',
-          name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
-        });
+      console.log('Auth event:', event);
+      
+      if (event === 'PASSWORD_RECOVERY') {
+        // Usuário clicou no link de recuperação de senha
+        setIsRecoveryMode(true);
+        setIsLoading(false);
+      } else if (event === 'SIGNED_IN' && session?.user) {
+        // Se estiver em modo de recuperação, não autenticar ainda
+        if (!isRecoveryMode) {
+          setIsAuthenticated(true);
+          setUser({
+            id: session.user.id,
+            email: session.user.email || '',
+            name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
+          });
+        }
+        setIsLoading(false);
       } else if (event === 'SIGNED_OUT') {
+        setIsRecoveryMode(false);
         // Não limpar se for admin local
         const localUser = localStorage.getItem('inspetor_master_user');
         if (localUser) {
@@ -86,6 +101,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         } else {
           setIsAuthenticated(false);
           setUser(null);
+        }
+      } else if (event === 'USER_UPDATED') {
+        // Senha foi atualizada com sucesso
+        setIsRecoveryMode(false);
+        if (session?.user) {
+          setIsAuthenticated(true);
+          setUser({
+            id: session.user.id,
+            email: session.user.email || '',
+            name: session.user.user_metadata?.name || session.user.email?.split('@')[0] || 'Usuário',
+          });
         }
       }
     });
@@ -230,6 +256,73 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      if (!email) {
+        return { success: false, error: 'Por favor, insira seu e-mail.' };
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const normalizedEmail = email.trim().toLowerCase();
+
+      if (!emailRegex.test(normalizedEmail)) {
+        return { success: false, error: 'Por favor, insira um e-mail válido.' };
+      }
+
+      // URL de redirecionamento - usar a URL atual do site
+      const redirectUrl = window.location.origin;
+
+      const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
+        redirectTo: redirectUrl,
+      });
+
+      if (error) {
+        if (error.message.includes('User not found')) {
+          return { success: false, error: 'E-mail não encontrado.' };
+        }
+        if (error.message.includes('Rate limit')) {
+          return { success: false, error: 'Muitas tentativas. Aguarde alguns minutos.' };
+        }
+        return { success: false, error: error.message };
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error('Erro ao enviar email de recuperação:', error);
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
+    }
+  };
+
+  const updatePassword = async (newPassword: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      if (!newPassword) {
+        return { success: false, error: 'Por favor, insira a nova senha.' };
+      }
+
+      if (newPassword.length < 6) {
+        return { success: false, error: 'A senha deve ter pelo menos 6 caracteres.' };
+      }
+
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword,
+      });
+
+      if (error) {
+        if (error.message.includes('same password')) {
+          return { success: false, error: 'A nova senha deve ser diferente da anterior.' };
+        }
+        return { success: false, error: error.message };
+      }
+
+      // Senha atualizada com sucesso - sair do modo de recuperação
+      setIsRecoveryMode(false);
+      return { success: true };
+    } catch (error) {
+      console.error('Erro ao atualizar senha:', error);
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
+    }
+  };
+
   const logout = async () => {
     try {
       // Logout do Supabase
@@ -241,18 +334,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       setIsAuthenticated(false);
       setUser(null);
+      setIsRecoveryMode(false);
     } catch (error) {
       console.error('Erro durante logout:', error);
       // Forçar logout mesmo com erro
       setIsAuthenticated(false);
       setUser(null);
+      setIsRecoveryMode(false);
       localStorage.removeItem('inspetor_master_auth');
       localStorage.removeItem('inspetor_master_user');
     }
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, register, logout, user, isLoading }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, register, resetPassword, updatePassword, logout, user, isLoading, isRecoveryMode }}>
       {children}
     </AuthContext.Provider>
   );
