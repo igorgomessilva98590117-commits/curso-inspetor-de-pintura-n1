@@ -312,7 +312,7 @@ export const Login: React.FC = () => {
                 <div className="flex items-center justify-center mt-6">
                   <button
                     type="button"
-                    className="text-xs text-gray-500 hover:text-orange-500 transition-colors duration-200"
+                    className="text-sm text-gray-400 hover:text-orange-500 transition-colors duration-200 underline underline-offset-2 py-2 px-4"
                     onClick={openForgotPassword}
                   >
                     Esqueci minha senha
