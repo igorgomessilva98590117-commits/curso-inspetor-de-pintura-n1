@@ -8,6 +8,7 @@ type ViewType = 'main' | 'forgot-password' | 'email-confirmation' | 'reset-email
 export const Login: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('login');
   const [currentView, setCurrentView] = useState<ViewType>('main');
+  const [showForgotModal, setShowForgotModal] = useState(false);
   
   // Estados do formulário
   const [email, setEmail] = useState('');
@@ -21,6 +22,7 @@ export const Login: React.FC = () => {
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [registeredEmail, setRegisteredEmail] = useState('');
+  const [resetSuccess, setResetSuccess] = useState(false);
   
   const { login, register, loginWithGoogle, resetPassword } = useAuth();
 
@@ -134,16 +136,48 @@ export const Login: React.FC = () => {
   };
 
   const openForgotPassword = () => {
-    setCurrentView('forgot-password');
+    setShowForgotModal(true);
     setError('');
     setSuccess('');
+    setResetSuccess(false);
     setResetEmail(email); // Preenche com o email já digitado
   };
 
   const closeForgotPassword = () => {
-    setCurrentView('main');
+    setShowForgotModal(false);
     setError('');
     setSuccess('');
+    setResetSuccess(false);
+  };
+
+  const handleForgotPasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+    setIsLoading(true);
+
+    try {
+      const emailToReset = resetEmail.trim();
+      
+      if (!emailToReset) {
+        setError('Por favor, insira seu e-mail.');
+        setIsLoading(false);
+        return;
+      }
+
+      const result = await resetPassword(emailToReset);
+
+      if (result.success) {
+        setResetSuccess(true);
+        setRegisteredEmail(emailToReset);
+      } else {
+        setError(result.error || 'Erro ao enviar e-mail de recuperação.');
+      }
+    } catch (err) {
+      setError('Ocorreu um erro inesperado. Tente novamente.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -730,6 +764,159 @@ export const Login: React.FC = () => {
                 Verifique também sua pasta de spam.
               </p>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Esqueci Minha Senha */}
+      {showForgotModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Overlay escuro */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={closeForgotPassword}
+          />
+          
+          {/* Modal */}
+          <div className="relative z-10 w-full max-w-[400px] bg-[#0A0A0A] border border-[#2A2A2A] rounded-2xl shadow-2xl shadow-black/50 overflow-hidden animate-fadeIn">
+            {/* Botão Fechar */}
+            <button
+              type="button"
+              onClick={closeForgotPassword}
+              className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {!resetSuccess ? (
+              /* Formulário de recuperação */
+              <div className="p-6">
+                {/* Header */}
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center w-14 h-14 mb-4 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30">
+                    <Lock className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-xl font-bold text-white mb-2">
+                    Esqueci minha senha
+                  </h2>
+                  <p className="text-gray-500 text-sm">
+                    Digite seu e-mail para receber o link de recuperação
+                  </p>
+                </div>
+
+                {/* Formulário */}
+                <form onSubmit={handleForgotPasswordSubmit} className="space-y-4">
+                  {/* Email Input */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-medium text-gray-400 ml-1" htmlFor="forgot-email">
+                      E-mail cadastrado
+                    </label>
+                    <div className="relative group">
+                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Mail className="h-5 w-5 text-gray-600 group-focus-within:text-orange-500 transition-colors duration-300" />
+                      </div>
+                      <input
+                        id="forgot-email"
+                        type="email"
+                        value={resetEmail}
+                        onChange={(e) => setResetEmail(e.target.value)}
+                        className="block w-full pl-10 pr-3 py-3 bg-[#141414] border border-[#2A2A2A] rounded-lg text-gray-200 placeholder-gray-600 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all duration-300 sm:text-sm"
+                        placeholder="seu@email.com"
+                        autoComplete="email"
+                        autoFocus
+                      />
+                    </div>
+                  </div>
+
+                  {/* Mensagem de Erro */}
+                  {error && (
+                    <div className="flex items-center gap-2 text-red-400 text-xs bg-red-500/10 border border-red-500/20 p-3 rounded-lg">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{error}</span>
+                    </div>
+                  )}
+
+                  {/* Botão Enviar */}
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:ring-offset-[#0A0A0A] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    {isLoading ? (
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Mail className="w-4 h-4 mr-2" />
+                        ENVIAR LINK DE RECUPERAÇÃO
+                      </>
+                    )}
+                  </button>
+
+                  {/* Voltar */}
+                  <button
+                    type="button"
+                    onClick={closeForgotPassword}
+                    className="w-full flex justify-center items-center py-2 text-sm text-gray-500 hover:text-white transition-colors"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Voltar ao login
+                  </button>
+                </form>
+              </div>
+            ) : (
+              /* Tela de Sucesso */
+              <div className="p-6 text-center">
+                {/* Ícone de Sucesso */}
+                <div className="relative inline-flex items-center justify-center mb-6">
+                  <div className="absolute w-20 h-20 bg-green-500/20 rounded-full animate-ping" />
+                  <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+                    <MailCheck className="w-8 h-8 text-white" />
+                  </div>
+                  <CheckCircle className="absolute -top-1 -right-1 w-6 h-6 text-green-400" />
+                </div>
+
+                <h2 className="text-xl font-bold text-white mb-2">
+                  E-mail enviado! ✓
+                </h2>
+                
+                <p className="text-gray-400 text-sm mb-4">
+                  Enviamos um link de recuperação para:
+                </p>
+
+                {/* Email Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#141414] border border-[#2A2A2A] rounded-lg mb-6">
+                  <Mail className="w-4 h-4 text-orange-500" />
+                  <span className="text-white font-medium text-sm">{registeredEmail}</span>
+                </div>
+
+                {/* Instruções */}
+                <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-4 mb-6 text-left">
+                  <p className="text-gray-300 text-sm mb-2">
+                    <span className="text-orange-500 font-semibold">1.</span> Abra seu e-mail
+                  </p>
+                  <p className="text-gray-300 text-sm mb-2">
+                    <span className="text-orange-500 font-semibold">2.</span> Clique no link de recuperação
+                  </p>
+                  <p className="text-gray-300 text-sm">
+                    <span className="text-orange-500 font-semibold">3.</span> Crie sua nova senha
+                  </p>
+                </div>
+
+                <p className="text-xs text-gray-600 mb-4">
+                  Não encontrou? Verifique sua pasta de <span className="text-gray-400">spam</span>
+                </p>
+
+                {/* Botão Fechar */}
+                <button
+                  type="button"
+                  onClick={closeForgotPassword}
+                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all duration-300"
+                >
+                  <LogIn className="w-4 h-4 mr-2" />
+                  VOLTAR AO LOGIN
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
