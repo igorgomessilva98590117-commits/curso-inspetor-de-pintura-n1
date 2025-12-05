@@ -4,13 +4,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
-    // Base path para GitHub Pages
-    // Se estiver em produção no GitHub Pages, use o nome do repositório
-    // Para desenvolvimento local, use '/'
-    const base = process.env.GITHUB_ACTIONS ? `/${process.env.GITHUB_REPOSITORY?.split('/')[1] || 'curso-inspetor-de-pintura-n1'}/` : '/';
+    // Base path '/' para domínio customizado (inspetormaster.com)
     
     return {
-      base: base,
+      base: '/',
       server: {
         port: 3000,
         host: '0.0.0.0',

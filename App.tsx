@@ -12,7 +12,25 @@ import { Lab } from './views/Lab';
 import { CaseStudies } from './views/CaseStudies';
 import { Documentation } from './views/Documentation';
 import { Mentor } from './views/Mentor';
-import { Users, MessageCircle, Instagram, Facebook, Linkedin } from 'lucide-react';
+import { Users, MessageCircle, Instagram, Facebook, Linkedin, GitBranch } from 'lucide-react';
+
+// Versão/Branch atual do sistema
+const APP_BRANCH = 'inspetormaster-1.2';
+
+// Componente de indicador de versão
+const VersionBadge: React.FC = () => {
+  return (
+    <div className="fixed bottom-4 right-4 z-50 group">
+      <div className="flex items-center gap-2 px-3 py-1.5 bg-[#141414]/90 backdrop-blur-sm border border-[#2a2a2a] rounded-full shadow-lg transition-all duration-300 hover:border-orange-500/50 hover:bg-[#1a1a1a]">
+        <GitBranch className="w-3.5 h-3.5 text-orange-500" />
+        <span className="text-xs font-mono text-gray-400 group-hover:text-gray-300 transition-colors">
+          {APP_BRANCH}
+        </span>
+        <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" title="Online" />
+      </div>
+    </div>
+  );
+};
 
 const AppContent: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -156,6 +174,7 @@ const App: React.FC = () => {
     <ThemeProvider>
       <AuthProvider>
         <AppContent />
+        <VersionBadge />
       </AuthProvider>
     </ThemeProvider>
   );

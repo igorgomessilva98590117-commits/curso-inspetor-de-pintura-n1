@@ -92,3 +92,5 @@ Se o deploy não funcionar:
 2. Verifique se o workflow foi executado (Actions tab)
 3. Verifique os logs do workflow para erros
 
+
+

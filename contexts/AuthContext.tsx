@@ -13,6 +13,8 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   loginWithGoogle: () => Promise<{ success: boolean; error?: string }>;
   register: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
+  resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
+  updatePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
   user: User | null;
   isLoading: boolean;
@@ -155,10 +157,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const loginWithGoogle = async (): Promise<{ success: boolean; error?: string }> => {
     try {
+      // URL de produção para redirecionamento
+      const productionUrl = 'https://inspetormaster.com';
+      const redirectUrl = window.location.hostname === 'localhost' 
+        ? window.location.origin 
+        : productionUrl;
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: redirectUrl,
         },
       });
 
@@ -200,6 +208,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return { success: false, error: 'O nome deve ter pelo menos 2 caracteres.' };
       }
 
+      // URL de produção para redirecionamento após confirmar email
+      const productionUrl = 'https://inspetormaster.com';
+      const redirectUrl = window.location.hostname === 'localhost' 
+        ? window.location.origin 
+        : productionUrl;
+
       // Cadastro via Supabase
       const { data, error } = await supabase.auth.signUp({
         email: normalizedEmail,
@@ -208,6 +222,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           data: {
             name: name.trim(),
           },
+          emailRedirectTo: redirectUrl,
         },
       });
 
@@ -257,6 +272,71 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      if (!email) {
+        return { success: false, error: 'Por favor, insira seu e-mail.' };
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const normalizedEmail = email.trim().toLowerCase();
+
+      if (!emailRegex.test(normalizedEmail)) {
+        return { success: false, error: 'Por favor, insira um e-mail válido.' };
+      }
+
+      // URL de produção para redirecionamento
+      const productionUrl = 'https://inspetormaster.com';
+      const baseUrl = window.location.hostname === 'localhost' 
+        ? window.location.origin 
+        : productionUrl;
+      
+      const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
+        redirectTo: `${baseUrl}/reset-password`,
+      });
+
+      if (error) {
+        if (error.message.includes('User not found')) {
+          return { success: false, error: 'E-mail não encontrado.' };
+        }
+        if (error.message.includes('Rate limit')) {
+          return { success: false, error: 'Muitas tentativas. Aguarde alguns minutos.' };
+        }
+        return { success: false, error: error.message };
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error('Erro ao enviar email de recuperação:', error);
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
+    }
+  };
+
+  const updatePassword = async (newPassword: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      if (!newPassword) {
+        return { success: false, error: 'Por favor, insira a nova senha.' };
+      }
+
+      if (newPassword.length < 6) {
+        return { success: false, error: 'A senha deve ter pelo menos 6 caracteres.' };
+      }
+
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword,
+      });
+
+      if (error) {
+        return { success: false, error: error.message };
+      }
+
+      return { success: true };
+    } catch (error) {
+      console.error('Erro ao atualizar senha:', error);
+      return { success: false, error: 'Erro de conexão. Verifique sua internet.' };
+    }
+  };
+
   const logout = async () => {
     try {
       // Logout do Supabase
@@ -279,7 +359,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, loginWithGoogle, register, logout, user, isLoading }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, loginWithGoogle, register, resetPassword, updatePassword, logout, user, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
