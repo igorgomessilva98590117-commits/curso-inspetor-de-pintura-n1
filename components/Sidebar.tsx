@@ -89,13 +89,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
                     w-full flex items-center gap-3 px-3 py-3 rounded-lg
                     transition-all duration-200 group
                     ${isActive 
-                      ? 'bg-gradient-to-r from-amber-500/20 to-orange-600/20 dark:from-amber-500/30 dark:to-orange-600/30 text-amber-400 dark:text-white border-l-2 border-amber-500 dark:border-[#FF6700]' 
-                      : 'text-slate-400 dark:text-[#666666] hover:text-white dark:hover:text-[#333333] hover:bg-[#1a1a1a] dark:hover:bg-slate-100'
+                      ? 'bg-gradient-to-r from-amber-500/20 to-orange-600/20 dark:from-orange-100 dark:to-orange-50 text-amber-400 dark:text-orange-600 border-l-2 border-amber-500 dark:border-orange-400' 
+                      : 'text-slate-400 dark:text-slate-600 hover:text-white dark:hover:text-slate-900 hover:bg-[#1a1a1a] dark:hover:bg-slate-100'
                     }
                   `}
                   title={isCollapsed ? item.label : undefined}
                 >
-                  <item.icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-amber-500 dark:text-white' : 'dark:text-[#666666]'}`} />
+                  <item.icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-amber-500 dark:text-orange-500' : 'dark:text-slate-500'}`} />
                   {!isCollapsed && (
                     <span className="font-medium text-sm">{item.label}</span>
                   )}
@@ -109,7 +109,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
             {bottomItems.map((item) => (
               <button
                 key={item.id}
-                className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 dark:text-[#666666] hover:text-white dark:hover:text-[#333333] hover:bg-[#1a1a1a] dark:hover:bg-slate-100 transition-all duration-200 group"
+                className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 dark:text-slate-600 hover:text-white dark:hover:text-slate-900 hover:bg-[#1a1a1a] dark:hover:bg-slate-100 transition-all duration-200 group"
                 title={isCollapsed ? item.label : undefined}
               >
                 <item.icon className="w-5 h-5 flex-shrink-0" />
@@ -122,7 +122,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
             {/* Toggle Theme */}
             <button
               onClick={toggleTheme}
-              className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 hover:text-white hover:bg-[#1a1a1a] dark:hover:bg-slate-700 transition-all duration-200 group"
+              className="w-full flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400 dark:text-slate-600 hover:text-white dark:hover:text-slate-900 hover:bg-[#1a1a1a] dark:hover:bg-slate-100 transition-all duration-200 group"
               title={isCollapsed ? (theme === 'dark' ? 'Modo Claro' : 'Modo Escuro') : undefined}
             >
               {theme === 'dark' ? (

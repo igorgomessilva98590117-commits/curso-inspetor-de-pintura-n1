@@ -110,28 +110,50 @@
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
       }
 
-      /* Custom Scrollbar Premium */
+      /* Custom Scrollbar Premium - Dark Mode */
+      .dark ::-webkit-scrollbar,
       ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
       }
       ::-webkit-scrollbar-track {
         background: #0a0a0a;
-        border-radius: 5px;
+        border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb {
         background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
-        border-radius: 5px;
+        border-radius: 4px;
         border: 2px solid #0a0a0a;
       }
       ::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
       }
 
-      /* Scrollbar para Firefox */
+      /* Scrollbar para Firefox - Dark */
       * {
         scrollbar-width: thin;
         scrollbar-color: #f59e0b #0a0a0a;
+      }
+
+      /* Custom Scrollbar - Light Mode */
+      html:not(.dark) ::-webkit-scrollbar-track,
+      body.light ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      html:not(.dark) ::-webkit-scrollbar-thumb,
+      body.light ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%);
+        border: 2px solid #f1f5f9;
+      }
+      html:not(.dark) ::-webkit-scrollbar-thumb:hover,
+      body.light ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+      }
+      
+      /* Scrollbar Firefox - Light Mode */
+      html:not(.dark) *,
+      body.light * {
+        scrollbar-color: #cbd5e1 #f1f5f9;
       }
 
       /* Hide scrollbar mas mantém funcionalidade */
