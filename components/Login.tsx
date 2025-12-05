@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { LogIn, Lock, Mail, AlertCircle, User, UserPlus, CheckCircle, ArrowLeft, MailCheck, KeyRound } from 'lucide-react';
+import { LogIn, Lock, Mail, AlertCircle, User, UserPlus, CheckCircle, ArrowLeft, MailCheck, KeyRound, Sparkles } from 'lucide-react';
 
-type PageType = 'login' | 'register' | 'forgot-password' | 'reset-success';
+type PageType = 'login' | 'register' | 'forgot-password' | 'reset-success' | 'email-confirmation';
 
 export const Login: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('login');
@@ -13,6 +13,7 @@ export const Login: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [resetEmail, setResetEmail] = useState('');
+  const [registeredEmail, setRegisteredEmail] = useState('');
   
   // Estados de feedback
   const [error, setError] = useState('');
@@ -80,13 +81,13 @@ export const Login: React.FC = () => {
         return;
       }
 
-      const result = await register(email.trim(), password, name.trim());
+      const userEmail = email.trim();
+      const result = await register(userEmail, password, name.trim());
 
       if (result.success) {
-        if (result.error) {
-          setSuccess(result.error);
-          resetForm();
-        }
+        // Cadastro bem-sucedido - mostrar página de confirmação de email
+        setRegisteredEmail(userEmail);
+        setCurrentPage('email-confirmation');
       } else {
         setError(result.error || 'Erro ao cadastrar. Tente novamente.');
       }
@@ -505,7 +506,7 @@ export const Login: React.FC = () => {
         </div>
       )}
 
-      {/* ==================== PÁGINA DE SUCESSO ==================== */}
+      {/* ==================== PÁGINA DE SUCESSO RESET ==================== */}
       {currentPage === 'reset-success' && (
         <div className="relative z-10 w-full max-w-[420px] bg-[#0A0A0A] border border-[#1F1F1F] rounded-2xl shadow-2xl shadow-black/50 backdrop-blur-xl overflow-hidden">
           <div className="text-center p-8">
@@ -569,6 +570,79 @@ export const Login: React.FC = () => {
               className="mt-4 text-sm text-gray-500 hover:text-orange-500 transition-colors duration-200"
             >
               Não recebeu? Enviar novamente
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ==================== PÁGINA CONFIRMAÇÃO DE EMAIL (CADASTRO) ==================== */}
+      {currentPage === 'email-confirmation' && (
+        <div className="relative z-10 w-full max-w-[420px] bg-[#0A0A0A] border border-[#1F1F1F] rounded-2xl shadow-2xl shadow-black/50 backdrop-blur-xl overflow-hidden">
+          <div className="text-center p-8">
+            {/* Success Animation */}
+            <div className="relative inline-flex items-center justify-center mb-6">
+              <div className="absolute w-24 h-24 bg-green-500/20 rounded-full animate-ping" />
+              <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+                <MailCheck className="w-10 h-10 text-white" />
+              </div>
+              <Sparkles className="absolute -top-1 -right-1 w-6 h-6 text-yellow-400 animate-pulse" />
+            </div>
+
+            {/* Title */}
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Quase lá! 🎉
+            </h2>
+            
+            {/* Subtitle */}
+            <p className="text-gray-400 text-sm mb-6">
+              Enviamos um link de confirmação para:
+            </p>
+
+            {/* Email Badge */}
+            <div className="inline-flex items-center gap-2 px-5 py-3 bg-[#141414] border border-[#2A2A2A] rounded-xl mb-6">
+              <Mail className="w-5 h-5 text-orange-500" />
+              <span className="text-white font-medium">{registeredEmail}</span>
+            </div>
+
+            {/* Alert Box */}
+            <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mb-6">
+              <p className="text-orange-400 text-sm font-medium">
+                ⚠️ Você precisa confirmar seu e-mail antes de fazer login!
+              </p>
+            </div>
+
+            {/* Instructions */}
+            <div className="bg-[#141414] border border-[#2A2A2A] rounded-xl p-5 mb-6 text-left">
+              <p className="text-gray-300 text-sm mb-3">
+                <span className="text-orange-500 font-bold">1.</span> Abra sua caixa de entrada
+              </p>
+              <p className="text-gray-300 text-sm mb-3">
+                <span className="text-orange-500 font-bold">2.</span> Procure pelo e-mail do <span className="text-white font-medium">Inspetor Master</span>
+              </p>
+              <p className="text-gray-300 text-sm mb-3">
+                <span className="text-orange-500 font-bold">3.</span> Clique no link de confirmação
+              </p>
+              <p className="text-gray-300 text-sm">
+                <span className="text-orange-500 font-bold">4.</span> Volte aqui e faça login
+              </p>
+            </div>
+
+            {/* Spam Notice */}
+            <p className="text-xs text-gray-600 mb-6">
+              Não encontrou? Verifique sua pasta de <span className="text-gray-400 font-medium">spam</span> ou <span className="text-gray-400 font-medium">lixo eletrônico</span>
+            </p>
+
+            {/* Back to Login Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setEmail(registeredEmail);
+                goToLogin();
+              }}
+              className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 transition-all duration-300 transform hover:translate-y-[-1px]"
+            >
+              <LogIn className="w-4 h-4 mr-2" />
+              IR PARA O LOGIN
             </button>
           </div>
         </div>
