@@ -1,0 +1,221 @@
+{
+  "title": "Simulado Técnico: PC-08 Análise de Falhas e Defeitos",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Qual é o objetivo técnico principal da prova PC-08 em relação à prova PC-01?",
+      "hint": "Pense na diferença entre 'ver' (PC-01) e 'definir' (PC-08).",
+      "answerOptions": [
+        {
+          "text": "Refazer o mapeamento para confirmar se os defeitos ainda estão lá.",
+          "rationale": "A inspeção física já acabou.",
+          "isCorrect": false
+        },
+        {
+          "text": "Referir-se à conceituação das falhas e defeitos identificados e mapeados na prova PC-01.",
+          "rationale": "Correto. Item A.10(a). É a prova de conceituação teórica do que foi visto.",
+          "isCorrect": true
+        },
+        {
+          "text": "Medir a profundidade dos defeitos.",
+          "rationale": "Isso seria medição, não análise conceitual.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "Qual formulário o candidato utiliza para realizar a prova PC-08?",
+      "hint": "Você precisa dos dados que você mesmo gerou.",
+      "answerOptions": [
+        {
+          "text": "Um formulário em branco, totalmente novo.",
+          "rationale": "Você perderia a referência do que encontrou.",
+          "isCorrect": false
+        },
+        {
+          "text": "O mesmo formulário usado na prova PC-01.",
+          "rationale": "Correto. Item A.10(b).",
+          "isCorrect": true
+        },
+        {
+          "text": "O formulário de RNC.",
+          "rationale": "RNC é outra parte do exame (Estudo de Casos).",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "Na prática, como o candidato deve preencher a resposta na tabela da PC-08?",
+      "hint": "Não é redação, é correlação.",
+      "answerOptions": [
+        {
+          "text": "Escrever um texto dissertativo explicando a causa raiz.",
+          "rationale": "A prova não pede causa raiz, pede conceito.",
+          "isCorrect": false
+        },
+        {
+          "text": "Indicar na coluna 'Nº DO CONCEITO' uma das opções dos conceitos informados na tabela de prova.",
+          "rationale": "Correto. Item A.10(c).",
+          "isCorrect": true
+        },
+        {
+          "text": "Desenhar novamente o defeito.",
+          "rationale": "O desenho já foi feito na PC-01.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Qual é a correspondência exigida entre os conceitos e os defeitos?",
+      "hint": "1 para 1.",
+      "answerOptions": [
+        {
+          "text": "Um conceito pode servir para todos os defeitos.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cada conceito terá a correspondência de uma falha ou defeito identificado e mapeado na prova PC-01.",
+          "rationale": "Correto. Item A.10(d).",
+          "isCorrect": true
+        },
+        {
+          "text": "Não há correspondência direta.",
+          "rationale": "A prova é exatamente sobre essa correspondência.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "Para ser aprovado especificamente na prova PC-08, qual é o critério mínimo de acertos?",
+      "hint": "Mesmo número exigido para a identificação na PC-02.",
+      "answerOptions": [
+        {
+          "text": "Acertar todos os 6 conceitos.",
+          "rationale": "A perfeição não é o mínimo exigido.",
+          "isCorrect": false
+        },
+        {
+          "text": "Obter pelo menos 4 acertos para conceituação das falhas ou defeitos.",
+          "rationale": "Correto. Item A.10(e).",
+          "isCorrect": true
+        },
+        {
+          "text": "3 acertos.",
+          "rationale": "Insuficiente para aprovação.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "Qual é o tempo disponível para realizar essa associação de conceitos na PC-08?",
+      "hint": "É rápido.",
+      "answerOptions": [
+        {
+          "text": "30 minutos.",
+          "rationale": "Correto. Item A.10(f).",
+          "isCorrect": true
+        },
+        {
+          "text": "45 minutos.",
+          "rationale": "Tempo do Exame Teórico Geral.",
+          "isCorrect": false
+        },
+        {
+          "text": "1 hora.",
+          "rationale": "Tempo da PC-01.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "Se o candidato identificou 'Corrosão' na PC-01, o que ele deve fazer na PC-08?",
+      "hint": "Ligar o nome à pessoa (definição).",
+      "answerOptions": [
+        {
+          "text": "Medir a área corroída.",
+          "rationale": "Isso é tarefa prática, não conceitual.",
+          "isCorrect": false
+        },
+        {
+          "text": "Buscar na tabela de conceitos a definição técnica que descreve 'Corrosão' e anotar o número correspondente.",
+          "rationale": "Correto. Procedimento padrão da PC-08.",
+          "isCorrect": true
+        },
+        {
+          "text": "Ignorar.",
+          "rationale": "Se foi mapeado, precisa ser conceituado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "A prova PC-08 exige que o candidato retorne ao campo para inspecionar a peça novamente?",
+      "hint": "Escritório vs. Campo.",
+      "answerOptions": [
+        {
+          "text": "Sim, para confirmar dados.",
+          "rationale": "A inspeção visual encerrou na PC-01.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não, a prova é feita com base no formulário já preenchido da PC-01 e na tabela de conceitos fornecida.",
+          "rationale": "Correto. É uma prova analítica de gabinete.",
+          "isCorrect": true
+        },
+        {
+          "text": "Depende do examinador.",
+          "rationale": "A regra é clara: usa-se o formulário anterior.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Se o candidato deixar a coluna 'Nº do Conceito' em branco para um defeito mapeado, o que acontece?",
+      "hint": "Sem resposta, sem ponto.",
+      "answerOptions": [
+        {
+          "text": "O examinador preenche.",
+          "rationale": "O examinador apenas corrige.",
+          "isCorrect": false
+        },
+        {
+          "text": "O item será considerado errado/não pontuado.",
+          "rationale": "Correto. Falta de conceituação é erro.",
+          "isCorrect": true
+        },
+        {
+          "text": "É considerado acerto parcial.",
+          "rationale": "Não existe meio termo.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Por que é importante que o candidato tenha feito um bom mapeamento na PC-01?",
+      "hint": "Efeito cascata.",
+      "answerOptions": [
+        {
+          "text": "Para ganhar nota na caligrafia.",
+          "rationale": "Secundário.",
+          "isCorrect": false
+        },
+        {
+          "text": "Porque a PC-08 depende da identificação clara das falhas mapeadas na PC-01 para fazer a correspondência correta.",
+          "rationale": "Correto. Sem um bom mapa (PC-01), não há como conceituar (PC-08).",
+          "isCorrect": true
+        }
+      ]
+    }
+  ]
+}
+

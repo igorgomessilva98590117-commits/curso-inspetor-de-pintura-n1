@@ -1,0 +1,226 @@
+{
+  "title": "Simulado Técnico: PC-04 Medição de Espessura (MEPS)",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Antes de medir a peça, o candidato deve verificar o 'zero' do equipamento na placa de aço liso. Qual é o desvio máximo aceitável nessa verificação segundo as instruções?",
+      "hint": "É um valor muito pequeno, indicando precisão na base ferrosa.",
+      "answerOptions": [
+        {
+          "text": "+/- 5 micrometros.",
+          "rationale": "Muito alto para verificação de zero.",
+          "isCorrect": false
+        },
+        {
+          "text": "+/- 10%.",
+          "rationale": "Porcentagem não se aplica ao zero absoluto.",
+          "isCorrect": false
+        },
+        {
+          "text": "+/- 1 micrometro.",
+          "rationale": "Correto. Conforme item A.6(e), admite-se desvio de 1 micrometro no zero.",
+          "isCorrect": true
+        },
+        {
+          "text": "+/- 2 micrometros.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "Ao ajustar o equipamento utilizando uma espessura de película padrão (calço), qual é a tolerância máxima permitida na leitura?",
+      "hint": "Esta tolerância é percentual em relação ao valor do calço.",
+      "answerOptions": [
+        {
+          "text": "+/- 1 micrometro.",
+          "rationale": "Isso é para o zero, não para o calço.",
+          "isCorrect": false
+        },
+        {
+          "text": "+/- 5% para mais ou para menos.",
+          "rationale": "Correto. Item A.6(e) define desvio máximo de 5% na leitura do padrão.",
+          "isCorrect": true
+        },
+        {
+          "text": "+/- 10%.",
+          "rationale": "Tolerância muito larga para calibração.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "O formulário pede o 'Fator de Correção'. Em que se baseia esse fator tecnicamente?",
+      "hint": "O que existe embaixo da tinta que afeta a medição magnética?",
+      "answerOptions": [
+        {
+          "text": "Na temperatura da peça.",
+          "rationale": "Temperatura afeta cura, não diretamente a geometria da medição neste contexto.",
+          "isCorrect": false
+        },
+        {
+          "text": "No perfil de rugosidade e na forma do abrasivo usado (angular ou esférico).",
+          "rationale": "Correto. Item A.6(h). O fator corrige o efeito da ancoragem na leitura.",
+          "isCorrect": true
+        },
+        {
+          "text": "Na espessura da tinta anterior.",
+          "rationale": "Isso é desconto de demão, não fator de correção de substrato.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Para determinar a Espessura de Película Seca Final da demão inspecionada, qual cálculo é obrigatório se houver pintura prévia?",
+      "hint": "O medidor lê tudo o que está acima do metal.",
+      "answerOptions": [
+        {
+          "text": "Apenas a média das leituras atuais.",
+          "rationale": "Isso daria a espessura total do sistema, não da demão.",
+          "isCorrect": false
+        },
+        {
+          "text": "Descontar, conforme a especificação, as demãos anteriores.",
+          "rationale": "Correto. Item A.6(i). É necessário subtrair as camadas de fundo para isolar a camada atual.",
+          "isCorrect": true
+        },
+        {
+          "text": "Multiplicar a leitura por 0,9.",
+          "rationale": "Não existe regra fixa de multiplicação.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "Para tintas ricas em zinco à base de silicato, qual é a tolerância máxima aceitável em relação à espessura especificada?",
+      "hint": "Este material é crítico e não aceita grandes espessuras.",
+      "answerOptions": [
+        {
+          "text": "10%.",
+          "rationale": "Muito restrito.",
+          "isCorrect": false
+        },
+        {
+          "text": "20%.",
+          "rationale": "Correto. Item A.6(l) define máximo de 20% para zinco silicato.",
+          "isCorrect": true
+        },
+        {
+          "text": "40%.",
+          "rationale": "Esta tolerância é para outras tintas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "Para os demais tipos de tinta (ex: epóxi) que não sejam zinco silicato, qual é a tolerância máxima aceitável?",
+      "hint": "Materiais mais flexíveis aceitam maior sobre-espessura.",
+      "answerOptions": [
+        {
+          "text": "20%.",
+          "rationale": "Isso é para zinco.",
+          "isCorrect": false
+        },
+        {
+          "text": "40%.",
+          "rationale": "Correto. Item A.6(l) define até 40% para os demais tipos de tinta.",
+          "isCorrect": true
+        },
+        {
+          "text": "50%.",
+          "rationale": "Excessivo.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "O candidato deve justificar sua aprovação ou reprovação no formulário. O que deve constar nessa justificativa?",
+      "hint": "A prova sempre exige a fonte da informação.",
+      "answerOptions": [
+        {
+          "text": "Apenas a conta matemática.",
+          "rationale": "Insuficiente.",
+          "isCorrect": false
+        },
+        {
+          "text": "Informar item e subitem da instrução/norma que motivou a aprovação ou reprovação.",
+          "rationale": "Correto. Item A.6(k).",
+          "isCorrect": true
+        },
+        {
+          "text": "A opinião pessoal do inspetor.",
+          "rationale": "Inspeção é baseada em norma, não opinião.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "Qual é a dimensão da área a ser considerada para medição no corpo de prova da PC-04?",
+      "hint": "Corresponde ao tamanho padrão da chapa fornecida.",
+      "answerOptions": [
+        {
+          "text": "1 metro quadrado.",
+          "rationale": "Muito grande para prova de bancada.",
+          "isCorrect": false
+        },
+        {
+          "text": "30 cm x 30 cm (0,09 m2).",
+          "rationale": "Correto. Item A.6(e).",
+          "isCorrect": true
+        },
+        {
+          "text": "10 cm x 10 cm.",
+          "rationale": "Pequeno demais.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Qual é o tempo máximo permitido para a realização da prova PC-04?",
+      "hint": "Tempo padrão para as provas instrumentais rápidas.",
+      "answerOptions": [
+        {
+          "text": "30 minutos.",
+          "rationale": "Tempo da PC-06.",
+          "isCorrect": false
+        },
+        {
+          "text": "40 minutos.",
+          "rationale": "Correto. Item A.6(m) e Tabela 1.",
+          "isCorrect": true
+        },
+        {
+          "text": "1 hora.",
+          "rationale": "Tempo da PC-01.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Se a especificação pede 100 micrometros de tinta epóxi e você mediu 135 micrometros (líquido). Qual o laudo?",
+      "hint": "Epóxi é 'demais tintas'. Calcule 40% de 100.",
+      "answerOptions": [
+        {
+          "text": "Aprovado.",
+          "rationale": "Correto. O limite seria 140 (100 + 40%). 135 está dentro.",
+          "isCorrect": true
+        },
+        {
+          "text": "Reprovado.",
+          "rationale": "Errado. Está dentro da tolerância de 40%.",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
+

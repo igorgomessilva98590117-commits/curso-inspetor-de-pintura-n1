@@ -110,50 +110,85 @@
         font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
       }
 
-      /* Custom Scrollbar - Base */
+      /* ========================================
+         Custom Scrollbar - Premium Dark Theme
+         ======================================== */
+      
+      /* Base - Webkit (Chrome/Edge/Safari) */
       ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
       }
+      
       ::-webkit-scrollbar-track {
         background: transparent;
       }
+      
       ::-webkit-scrollbar-thumb {
-        border-radius: 3px;
+        border-radius: 10px;
+        transition: background 0.3s ease;
       }
 
-      /* Modo Escuro - Scrollbar Laranja */
-      .dark ::-webkit-scrollbar-track {
-        background: #1a1a1a;
+      /* ========================================
+         Modo Escuro - Scrollbar BRANCA e CINZA
+         ======================================== */
+      
+      /* Trilho: Branco */
+      html.dark ::-webkit-scrollbar-track,
+      html.dark *::-webkit-scrollbar-track {
+        background: #f3f4f6;
       }
-      .dark ::-webkit-scrollbar-thumb {
-        background: #f59e0b;
+      
+      /* Thumb: Cinza médio */
+      html.dark ::-webkit-scrollbar-thumb,
+      html.dark *::-webkit-scrollbar-thumb {
+        background: #9ca3af;
+        border-radius: 10px;
+        border: 2px solid #f3f4f6;
       }
-      .dark ::-webkit-scrollbar-thumb:hover {
-        background: #d97706;
+      
+      /* Hover: Cinza mais escuro */
+      html.dark ::-webkit-scrollbar-thumb:hover,
+      html.dark *::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
       }
       
       /* Firefox - Modo Escuro */
-      .dark * {
+      html.dark,
+      html.dark * {
         scrollbar-width: thin;
-        scrollbar-color: #f59e0b #1a1a1a;
+        scrollbar-color: #9ca3af #f3f4f6;
       }
 
-      /* Modo Claro - Scrollbar Cinza */
-      html:not(.dark) ::-webkit-scrollbar-track {
-        background: #f3f4f6;
+      /* ========================================
+         Modo Claro - Scrollbar PRETA e LARANJA
+         ======================================== */
+      
+      /* Trilho: Preto */
+      html:not(.dark) ::-webkit-scrollbar-track,
+      html:not(.dark) *::-webkit-scrollbar-track {
+        background: #0a0a0a;
       }
-      html:not(.dark) ::-webkit-scrollbar-thumb {
-        background: #d1d5db;
+      
+      /* Thumb: Laranja */
+      html:not(.dark) ::-webkit-scrollbar-thumb,
+      html:not(.dark) *::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+        border-radius: 10px;
+        border: 2px solid #0a0a0a;
       }
-      html:not(.dark) ::-webkit-scrollbar-thumb:hover {
-        background: #9ca3af;
+      
+      /* Hover: Laranja mais claro */
+      html:not(.dark) ::-webkit-scrollbar-thumb:hover,
+      html:not(.dark) *::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
       }
       
       /* Firefox - Modo Claro */
+      html:not(.dark),
       html:not(.dark) * {
         scrollbar-width: thin;
-        scrollbar-color: #d1d5db #f3f4f6;
+        scrollbar-color: #f59e0b #0a0a0a;
       }
 
       /* Hide scrollbar mas mantém funcionalidade */

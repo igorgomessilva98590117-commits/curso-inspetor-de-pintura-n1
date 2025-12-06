@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Play, CheckCircle2, Clock, BookOpen } from 'lucide-react';
 import { Tab } from '../types';
+import { ExamInterface } from '../components/ExamInterface';
+import pc01Data from '../data/exams/pc01.json';
+import pc08Data from '../data/exams/pc08.json';
+import pc02Data from '../data/exams/pc02.json';
+import pc03Data from '../data/exams/pc03.json';
+import pc04Data from '../data/exams/pc04.json';
+import pc05Data from '../data/exams/pc05.json';
+import pc06Data from '../data/exams/pc06.json';
+import pc07Data from '../data/exams/pc07.json';
 
 interface ModuleDetailProps {
   moduleId: string;
@@ -33,6 +42,7 @@ export const ModuleDetail: React.FC<ModuleDetailProps> = ({
   onChangeTab,
 }) => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [selectedExam, setSelectedExam] = useState<'pc01' | 'pc08' | 'pc02' | 'pc03' | 'pc04' | 'pc05' | 'pc06' | 'pc07' | null>(null);
 
   // Dados simulados - em produção viriam de uma API
   const videoLessons: VideoLesson[] = [
@@ -42,11 +52,32 @@ export const ModuleDetail: React.FC<ModuleDetailProps> = ({
     { id: '4', title: 'Casos de Estudo', duration: '20 min', completed: false },
   ];
 
-  const quizzes: Quiz[] = [
-    { id: '1', title: 'Quiz 1: Conceitos Básicos', questions: 10, completed: true, score: 85 },
-    { id: '2', title: 'Quiz 2: Aplicação Prática', questions: 15, completed: false },
-    { id: '3', title: 'Prova Final do Módulo', questions: 30, completed: false },
-  ];
+  const quizzes: Quiz[] =
+    moduleId === 'pc01-pc08'
+      ? [
+          { id: 'pc01', title: 'Prova PC-01 · Inspeção Visual', questions: 10, completed: false },
+          { id: 'pc08', title: 'Prova PC-08 · Análise de Falhas', questions: 10, completed: false },
+        ]
+      : moduleId === 'pc02-pc03'
+      ? [
+          { id: 'pc02', title: 'Prova PC-02 · Estados Iniciais e Preparo', questions: 10, completed: false },
+          { id: 'pc03', title: 'Prova PC-03 · Análise de Abrasivos', questions: 10, completed: false },
+        ]
+      : moduleId === 'pc04'
+      ? [
+          { id: 'pc04', title: 'Prova PC-04 · Medição de Espessura (MEPS)', questions: 10, completed: false },
+        ]
+      : moduleId === 'pc05-pc06-pc07'
+      ? [
+          { id: 'pc05', title: 'Prova PC-05 · Ensaio de Aderência', questions: 10, completed: false },
+          { id: 'pc06', title: 'Prova PC-06 · Medição de Rugosidade', questions: 10, completed: false },
+          { id: 'pc07', title: 'Prova PC-07 · Teste de Descontinuidade', questions: 10, completed: false },
+        ]
+      : [
+          { id: '1', title: 'Quiz 1: Conceitos Básicos', questions: 10, completed: true, score: 85 },
+          { id: '2', title: 'Quiz 2: Aplicação Prática', questions: 15, completed: false },
+          { id: '3', title: 'Prova Final do Módulo', questions: 30, completed: false },
+        ];
 
   const progress = Math.round(
     ((videoLessons.filter(v => v.completed).length + quizzes.filter(q => q.completed).length) /
@@ -132,7 +163,38 @@ export const ModuleDetail: React.FC<ModuleDetailProps> = ({
               key={quiz.id}
               className="bg-slate-800 rounded-lg border border-slate-700 p-6 hover:border-amber-500 transition-colors cursor-pointer group"
               onClick={() => {
-                // Navegar para a prova
+                if (quiz.id === 'pc01') {
+                  setSelectedExam('pc01');
+                  return;
+                }
+                if (quiz.id === 'pc08') {
+                  setSelectedExam('pc08');
+                  return;
+                }
+                if (quiz.id === 'pc02') {
+                  setSelectedExam('pc02');
+                  return;
+                }
+                if (quiz.id === 'pc03') {
+                  setSelectedExam('pc03');
+                  return;
+                }
+                if (quiz.id === 'pc04') {
+                  setSelectedExam('pc04');
+                  return;
+                }
+                if (quiz.id === 'pc05') {
+                  setSelectedExam('pc05');
+                  return;
+                }
+                if (quiz.id === 'pc06') {
+                  setSelectedExam('pc06');
+                  return;
+                }
+                if (quiz.id === 'pc07') {
+                  setSelectedExam('pc07');
+                  return;
+                }
                 onChangeTab(Tab.CASES);
               }}
             >
@@ -177,7 +239,58 @@ export const ModuleDetail: React.FC<ModuleDetailProps> = ({
           </div>
         </div>
       )}
+
+      {/* Interface de Prova PC-01 a PC-08 */}
+      {selectedExam === 'pc01' && (
+        <ExamInterface
+          examData={pc01Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc08' && (
+        <ExamInterface
+          examData={pc08Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc02' && (
+        <ExamInterface
+          examData={pc02Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc03' && (
+        <ExamInterface
+          examData={pc03Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc04' && (
+        <ExamInterface
+          examData={pc04Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc05' && (
+        <ExamInterface
+          examData={pc05Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc06' && (
+        <ExamInterface
+          examData={pc06Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
+      {selectedExam === 'pc07' && (
+        <ExamInterface
+          examData={pc07Data}
+          onClose={() => setSelectedExam(null)}
+        />
+      )}
     </div>
   );
 };
+
 

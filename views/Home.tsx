@@ -1,5 +1,5 @@
-import React from 'react';
-import { Play, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Play, ArrowRight, X } from 'lucide-react';
 import { Tab } from '../types';
 import { ContentTrack } from '../components/ContentTrack';
 import { EthicsBadge } from '../components/EthicsBadge';
@@ -7,6 +7,10 @@ import { EthicsBadge } from '../components/EthicsBadge';
 export const Home: React.FC<{ onChangeTab: (t: Tab) => void }> = ({ onChangeTab }) => {
   // Progresso simulado - em produção viria de um estado/contexto
   const overallProgress = 35;
+  const [showVideo, setShowVideo] = useState(false);
+  
+  // Vídeo de introdução
+  const videoId = 'lZttJKCa1nk';
 
   // Dados das trilhas de conteúdo
   const continueWatching = [
@@ -202,6 +206,46 @@ export const Home: React.FC<{ onChangeTab: (t: Tab) => void }> = ({ onChangeTab 
                 Ver Estudos de Casos
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Vídeo de Apresentação */}
+      <div className="mb-8 md:mb-12">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-50 dark:to-slate-100 rounded-2xl border-2 border-[#FF6700] overflow-hidden shadow-2xl transition-colors">
+          <div className="p-4 md:p-6 border-b border-[#1a1a1a] dark:border-slate-200 bg-[#0a0a0a] dark:bg-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-white dark:text-slate-900 flex items-center gap-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#FF6700] to-orange-600 rounded-full flex items-center justify-center">
+                <Play className="w-6 h-6 text-white ml-1" fill="white" />
+              </div>
+              Vídeo de Apresentação do Curso
+            </h2>
+            <p className="text-slate-400 dark:text-slate-600 mt-2 ml-15">
+              Assista ao vídeo de introdução · ID: {videoId}
+            </p>
+          </div>
+          <div className="relative aspect-video bg-black w-full">
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+              title="Vídeo de Apresentação do Curso"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+          {/* Link direto caso o embed não funcione */}
+          <div className="p-4 bg-[#0a0a0a] dark:bg-slate-100 border-t border-[#1a1a1a] dark:border-slate-200">
+            <a
+              href={`https://www.youtube.com/watch?v=${videoId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#FF6700] hover:text-orange-500 transition-colors flex items-center gap-2"
+            >
+              <Play className="w-4 h-4" />
+              Assistir no YouTube (caso não carregue aqui)
+            </a>
           </div>
         </div>
       </div>

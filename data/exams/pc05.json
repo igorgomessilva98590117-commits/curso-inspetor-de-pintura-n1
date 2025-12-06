@@ -1,0 +1,226 @@
+{
+  "title": "Simulado Técnico: PC-05 Ensaio de Aderência",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Ao listar os recursos materiais para realizar o ensaio na PC-05, o candidato deve incluir o medidor de espessura de película seca?",
+      "hint": "Leia atentamente as restrições sobre medição prévia na instrução A.7.",
+      "answerOptions": [
+        {
+          "text": "Sim, pois é obrigatório confirmar a espessura antes de cortar.",
+          "rationale": "A instrução manda assumir a espessura informada.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sim, mas apenas se a tinta for epóxi.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não. A instrução proíbe indicar recursos relacionados à medição de espessura.",
+          "rationale": "Correto. O candidato deve assumir que a espessura está correta conforme especificado.",
+          "isCorrect": true
+        },
+        {
+          "text": "Sim, para calcular a profundidade do corte.",
+          "rationale": "Não é necessário medir para isso na prova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "Se o sistema de pintura aplicado tiver espessura de até 120 micrometros, como o candidato deve definir qual método de corte utilizar?",
+      "hint": "Quem define a regra para espessuras baixas nesta prova específica?",
+      "answerOptions": [
+        {
+          "text": "Deve sempre usar Corte em Grade.",
+          "rationale": "Geralmente sim, mas a instrução da prova dá prioridade a outra definição.",
+          "isCorrect": false
+        },
+        {
+          "text": "Deve considerar que o método é determinado pelo cliente.",
+          "rationale": "Correto. O texto diz que até 120um deve ser determinado pelo cliente (verificar texto da prova).",
+          "isCorrect": true
+        },
+        {
+          "text": "O candidato escolhe o que achar mais fácil.",
+          "rationale": "O inspetor segue especificações, não conveniência.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "Qual é o critério máximo de aceitação para Corte em Grade (Gr) em tinta epóxi convencional?",
+      "hint": "Padrão geral de aceitação para tintas normais.",
+      "answerOptions": [
+        {
+          "text": "Gr 1.",
+          "rationale": "Correto. Considerar Gr 1 (máximo).",
+          "isCorrect": true
+        },
+        {
+          "text": "Gr 0.",
+          "rationale": "Muito rigoroso, Gr 1 é aceitável.",
+          "isCorrect": false
+        },
+        {
+          "text": "Gr 2.",
+          "rationale": "Gr 2 é reprovado para tintas convencionais.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Qual é o critério máximo de aceitação para Corte em Grade se a tinta for rica em zinco (silicato)?",
+      "hint": "Tintas de zinco têm uma 'colher de chá' na norma.",
+      "answerOptions": [
+        {
+          "text": "Gr 1.",
+          "rationale": "Rigoroso demais para zinco silicato.",
+          "isCorrect": false
+        },
+        {
+          "text": "Gr 2.",
+          "rationale": "Correto. Para tintas ricas em zinco à base de silicato, considerar Gr 2 (máximo).",
+          "isCorrect": true
+        },
+        {
+          "text": "Gr 3.",
+          "rationale": "Reprovado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "No método de Corte em X, qual é o valor máximo aceitável para a avaliação na interseção (Y)?",
+      "hint": "Existe um critério específico para o ponto onde os cortes se cruzam.",
+      "answerOptions": [
+        {
+          "text": "Y1.",
+          "rationale": "Critério incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "Y2.",
+          "rationale": "Correto. Avaliação na interseção dos cortes Y2 (máximo).",
+          "isCorrect": true
+        },
+        {
+          "text": "Y0.",
+          "rationale": "Critério incorreto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "Qual é o critério máximo de aceitação para Corte em X (incisões) para uma tinta poliuretano convencional?",
+      "hint": "Não é zinco, então segue a regra geral.",
+      "answerOptions": [
+        {
+          "text": "X1.",
+          "rationale": "Correto. Avaliação ao longo das incisões: X1 (máximo).",
+          "isCorrect": true
+        },
+        {
+          "text": "X2.",
+          "rationale": "X2 reprova tintas convencionais.",
+          "isCorrect": false
+        },
+        {
+          "text": "X0.",
+          "rationale": "X0 é perfeito, mas X1 também aprova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "Se a tinta for rica em zinco à base de silicato e o método for Corte em X, qual é o limite de aceitação?",
+      "hint": "Exceção do zinco aplica-se aqui também.",
+      "answerOptions": [
+        {
+          "text": "X1.",
+          "rationale": "Muito rigoroso.",
+          "isCorrect": false
+        },
+        {
+          "text": "X2.",
+          "rationale": "Correto. Se a demão for rica em zinco, considerar X2 (máximo).",
+          "isCorrect": true
+        },
+        {
+          "text": "X3.",
+          "rationale": "Reprovado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "Qual é o tempo limite para a prova PC-05?",
+      "hint": "Tempo padrão para ensaios destrutivos simples.",
+      "answerOptions": [
+        {
+          "text": "30 minutos.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "40 minutos.",
+          "rationale": "Correto. O tempo de realização da prova é de 40 minutos.",
+          "isCorrect": true
+        },
+        {
+          "text": "1 hora.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Ao justificar o laudo (Aprovado/Reprovado), qual deve ser a referência citada?",
+      "hint": "Não cite normas externas se o documento da prova já traz a regra.",
+      "answerOptions": [
+        {
+          "text": "A norma ASTM D3359.",
+          "rationale": "A prova exige base na instrução fornecida.",
+          "isCorrect": false
+        },
+        {
+          "text": "A instrução do candidato (item e subitem do documento de prova).",
+          "rationale": "Correto. Justificar com base nessa instrução.",
+          "isCorrect": true
+        },
+        {
+          "text": "O manual do fabricante.",
+          "rationale": "Irrelevante.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Se o candidato realizar um corte em X e obtiver um resultado X2 em uma tinta epóxi (sem fundo de zinco), qual deve ser o laudo?",
+      "hint": "Epóxi segue a regra geral (X1 máx).",
+      "answerOptions": [
+        {
+          "text": "Aprovado.",
+          "rationale": "X2 é pior que o limite X1.",
+          "isCorrect": false
+        },
+        {
+          "text": "Reprovado.",
+          "rationale": "Correto. Para tintas convencionais, X2 excede o limite permitido de X1.",
+          "isCorrect": true
+        }
+      ]
+    }
+  ]
+}
+

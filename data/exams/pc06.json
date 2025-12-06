@@ -1,0 +1,216 @@
+{
+  "title": "Simulado Técnico: PC-06 Medição de Rugosidade",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Como o candidato deve definir tecnicamente os locais onde fará as medições no croqui fornecido?",
+      "hint": "O mapeamento deve seguir uma lógica normativa e ser registrado visualmente.",
+      "answerOptions": [
+        {
+          "text": "Escolher aleatoriamente 3 pontos e medir.",
+          "rationale": "Falta critério técnico de rastreabilidade.",
+          "isCorrect": false
+        },
+        {
+          "text": "Baseado no informado nas normas, identificar no croqui, com pontos e números, os locais onde irá colher os dados.",
+          "rationale": "Correto. Conforme item A.8(h), deve-se identificar locais com pontos e números.",
+          "isCorrect": true
+        },
+        {
+          "text": "Medir apenas no centro da placa.",
+          "rationale": "Insuficiente para caracterizar o perfil.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "O texto fornece uma faixa de rugosidade (ex: 50 a 85 microns). Qual é o critério para considerar o perfil APROVADO?",
+      "hint": "A regra é binária: dentro ou fora.",
+      "answerOptions": [
+        {
+          "text": "Se a média for exatamente o valor máximo.",
+          "rationale": "Não precisa ser exata, basta estar na faixa.",
+          "isCorrect": false
+        },
+        {
+          "text": "Se o perfil de rugosidade se encontra dentro da faixa descrita na questão.",
+          "rationale": "Correto. Item A.8(i).",
+          "isCorrect": true
+        },
+        {
+          "text": "Se o perfil estiver até 10% acima do máximo.",
+          "rationale": "Não há tolerância extra especificada na instrução para rugosidade.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "Se o perfil medido for 90 microns para uma faixa de 50-85 microns, qual a justificativa técnica correta para a REPROVAÇÃO?",
+      "hint": "Seja específico sobre ONDE o valor caiu.",
+      "answerOptions": [
+        {
+          "text": "Reprovado, indicando que o perfil encontra-se acima do valor máximo da faixa descrita.",
+          "rationale": "Correto. Item A.8(l) exige indicar especificamente que está acima do máximo.",
+          "isCorrect": true
+        },
+        {
+          "text": "Reprovado, pois está fora da norma.",
+          "rationale": "Genérico demais.",
+          "isCorrect": false
+        },
+        {
+          "text": "Reprovado, indicando erro de jateamento.",
+          "rationale": "Isso é diagnóstico de causa, não justificativa do laudo de inspeção.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "O que o candidato deve escrever na Questão 4 (descritiva) da prova PC-06?",
+      "hint": "Não é sobre o conceito, é sobre o 'passo a passo'.",
+      "answerOptions": [
+        {
+          "text": "Um resumo da história da rugosidade.",
+          "rationale": "Irrelevante.",
+          "isCorrect": false
+        },
+        {
+          "text": "Descrever, resumidamente, a sequência de execução da medição, com o respectivo item da norma.",
+          "rationale": "Correto. Item A.8 (Questão 4).",
+          "isCorrect": true
+        },
+        {
+          "text": "O princípio de funcionamento do rugosímetro.",
+          "rationale": "Isso é teoria, a prova pede sequência de execução.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "Qual é o tempo máximo para a prova PC-06?",
+      "hint": "Prova rápida.",
+      "answerOptions": [
+        {
+          "text": "30 minutos.",
+          "rationale": "Correto. Tabela 1.",
+          "isCorrect": true
+        },
+        {
+          "text": "40 minutos.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "1 hora.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "O croqui fornecido está dividido em linhas e colunas. Qual é o espaçamento entre elas?",
+      "hint": "Define a escala do desenho.",
+      "answerOptions": [
+        {
+          "text": "1 cm.",
+          "rationale": "Muito denso.",
+          "isCorrect": false
+        },
+        {
+          "text": "5 cm.",
+          "rationale": "Correto. Item A.8(h) descreve distâncias de 5 cm.",
+          "isCorrect": true
+        },
+        {
+          "text": "10 cm.",
+          "rationale": "Muito espaçado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "Se o perfil medido estiver ABAIXO do valor mínimo da faixa, qual a justificativa aceita?",
+      "hint": "Use a linguagem da instrução.",
+      "answerOptions": [
+        {
+          "text": "Reprovado por rugosidade insuficiente.",
+          "rationale": "Termo não padronizado na instrução.",
+          "isCorrect": false
+        },
+        {
+          "text": "Reprovado, indicando que se encontra abaixo do valor mínimo da faixa descrita.",
+          "rationale": "Correto. Item A.8(l).",
+          "isCorrect": true
+        },
+        {
+          "text": "Reprovado com ressalva.",
+          "rationale": "Não existe ressalva para rugosidade fora da faixa.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "O que fazer com os valores de medição coletados no corpo de prova?",
+      "hint": "Se não está escrito, não aconteceu.",
+      "answerOptions": [
+        {
+          "text": "Memorizá-los apenas.",
+          "rationale": "Inaceitável em inspeção.",
+          "isCorrect": false
+        },
+        {
+          "text": "Lançar na tabela do formulário, na coluna valor de medição.",
+          "rationale": "Correto. Item A.8(h).",
+          "isCorrect": true
+        },
+        {
+          "text": "Calcular a média mentalmente.",
+          "rationale": "É preciso registrar os valores individuais primeiro.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "A identificação do 'Medidor de perfil de rugosidade' usado deve constar no formulário?",
+      "hint": "Rastreabilidade do instrumento.",
+      "answerOptions": [
+        {
+          "text": "Não, pois o aparelho é fornecido pela banca.",
+          "rationale": "O inspetor deve sempre registrar o equipamento que usou.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sim, indicar a opção/modelo usado no procedimento.",
+          "rationale": "Correto. Item A.8(f).",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "A Questão 4 pede a sequência de execução. O que é obrigatório citar junto com a descrição dos passos?",
+      "hint": "Não basta descrever a ação, tem que provar a origem.",
+      "answerOptions": [
+        {
+          "text": "O respectivo item da norma para essa finalidade.",
+          "rationale": "Correto. Item A.8 (Questão 4) exige citar o item da norma.",
+          "isCorrect": true
+        },
+        {
+          "text": "O tempo gasto em cada etapa.",
+          "rationale": "Não solicitado.",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
+

@@ -166,7 +166,7 @@ export const Practical: React.FC = () => {
               <div>
                 <h4 className="text-white dark:text-slate-900 font-semibold">
                   {showOriginal ? 'Estado Inicial da Superfície' : 'Resultado após Limpeza'}
-                </h4>
+            </h4>
                 <p className="text-slate-400 dark:text-slate-600 text-sm">
                   {showOriginal 
                     ? `Grau ${grade} de intemperismo conforme ISO 8501-1` 
@@ -220,8 +220,8 @@ export const Practical: React.FC = () => {
             <div className="text-2xl font-bold text-slate-100 dark:text-slate-800">Sa 3</div>
             <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Metal Branco</div>
             <div className="text-purple-400 text-xs mt-2">Alta exigência</div>
-          </div>
-        </div>
+            </div>
+         </div>
       </div>
     </div>
   );

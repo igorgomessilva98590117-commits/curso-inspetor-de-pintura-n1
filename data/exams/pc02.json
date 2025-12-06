@@ -1,0 +1,256 @@
+{
+  "title": "Simulado Técnico: PC-02 Estados Iniciais e Preparo",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Ao receber o corpo de prova na PC-02, você notará que cada face está dividida. Tecnicamente, o que essa divisão representa para a sua análise?",
+      "hint": "O corpo de prova conta a 'história' do aço: antes e depois.",
+      "answerOptions": [
+        {
+          "text": "Comparativo entre dois tipos de tinta.",
+          "rationale": "A prova foca em preparo de superfície, não em comparação de tintas.",
+          "isCorrect": false
+        },
+        {
+          "text": "Uma metade apresenta o grau de intemperismo (estado inicial) e a outra metade apresenta o grau de tratamento da superfície.",
+          "rationale": "Correto. Conforme itens A.4(e) e (f), a face é dividida para avaliar intemperismo e tratamento simultaneamente.",
+          "isCorrect": true
+        },
+        {
+          "text": "Uma metade é a frente e a outra o verso da chapa.",
+          "rationale": "Incorreto. A divisão ocorre na mesma face visual.",
+          "isCorrect": false
+        },
+        {
+          "text": "Comparativo entre jateamento com granalha angular e esférica.",
+          "rationale": "A divisão não é por tipo de abrasivo, mas por etapa do processo (antes/depois).",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "Na avaliação do Grau de Intemperismo (condição inicial), quantas classes técnicas o candidato deve considerar para classificar a superfície?",
+      "hint": "Lembre-se das letras clássicas da norma visual (A, B...)",
+      "answerOptions": [
+        {
+          "text": "2 classes (Com e sem carepa).",
+          "rationale": "A norma técnica exige maior detalhamento.",
+          "isCorrect": false
+        },
+        {
+          "text": "4 classes (Opções A, B, C ou D).",
+          "rationale": "Correto. Conforme item A.4(g), são 4 as opções para grau de intemperismo.",
+          "isCorrect": true
+        },
+        {
+          "text": "7 classes.",
+          "rationale": "7 é o número de opções para tratamento, não intemperismo.",
+          "isCorrect": false
+        },
+        {
+          "text": "Indefinido.",
+          "rationale": "A prova trabalha com opções fechadas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "Para a classificação do Grau de Tratamento (limpeza), quantas opções técnicas estão disponíveis no formulário para a escolha do candidato?",
+      "hint": "A lista inclui padrões manuais, mecânicos e graus de jateamento.",
+      "answerOptions": [
+        {
+          "text": "4 opções.",
+          "rationale": "Poucas opções para cobrir St e Sa.",
+          "isCorrect": false
+        },
+        {
+          "text": "5 opções.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "7 opções.",
+          "rationale": "Correto. Conforme item A.4(h), são 7 as opções para grau de tratamento.",
+          "isCorrect": true
+        },
+        {
+          "text": "10 opções.",
+          "rationale": "Excessivo para o escopo da prova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Se, ao analisar tecnicamente a metade destinada ao tratamento, o candidato constatar que a superfície não recebeu nenhum preparo, qual a notação correta?",
+      "hint": "Existe um símbolo gráfico específico para 'nenhum'.",
+      "answerOptions": [
+        {
+          "text": "Grau St 0.",
+          "rationale": "Essa nomenclatura não é usada no formulário.",
+          "isCorrect": false
+        },
+        {
+          "text": "Escrever 'Bruto'.",
+          "rationale": "Deve-se usar a notação padrão da prova.",
+          "isCorrect": false
+        },
+        {
+          "text": "Indicar com um traço (-).",
+          "rationale": "Correto. Conforme item A.4(h), caso não haja tratamento, deve-se indicar com traço.",
+          "isCorrect": true
+        },
+        {
+          "text": "Deixar em branco.",
+          "rationale": "Deixar em branco pode ser considerado erro ou omissão.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "A Questão 3 da prova exige a aprovação de faces para 'Obra Nova'. Qual é o critério técnico mínimo de limpeza que deve ser aceito?",
+      "hint": "Obra nova requer alta performance e aderência (jateamento profundo).",
+      "answerOptions": [
+        {
+          "text": "Limpeza Manual (St 2).",
+          "rationale": "Insuficiente para obra nova de alto desempenho.",
+          "isCorrect": false
+        },
+        {
+          "text": "Limpeza Mecânica (St 3).",
+          "rationale": "Ainda considerado preparo secundário.",
+          "isCorrect": false
+        },
+        {
+          "text": "Jateamento Comercial (Sa 2).",
+          "rationale": "Geralmente aceito apenas para manutenção.",
+          "isCorrect": false
+        },
+        {
+          "text": "Jateamento ao Metal Quase Branco (Sa 2 ½).",
+          "rationale": "Correto. Item A.4(j) define Sa 2 1/2 como o mínimo aceitável para esta finalidade.",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "Tecnicamente, quantas faces do corpo de prova o candidato pode indicar como 'aceitáveis' para obra nova na Questão 3?",
+      "hint": "A instrução impõe um limite máximo.",
+      "answerOptions": [
+        {
+          "text": "Todas as faces que estiverem limpas.",
+          "rationale": "A instrução limita a quantidade de respostas.",
+          "isCorrect": false
+        },
+        {
+          "text": "Um máximo de duas faces.",
+          "rationale": "Correto. Item A.4(j) limita a resposta a um máximo de duas faces.",
+          "isCorrect": true
+        },
+        {
+          "text": "Apenas uma face, obrigatoriamente.",
+          "rationale": "Pode ser uma ou duas, mas não obrigatoriamente apenas uma.",
+          "isCorrect": false
+        },
+        {
+          "text": "No mínimo três faces.",
+          "rationale": "O limite é máximo (2), não mínimo.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "O candidato ficou em dúvida se a superfície é Grau B ou C e marcou AMBAS as opções. Qual será o resultado técnico?",
+      "hint": "A indecisão técnica penaliza o laudo.",
+      "answerOptions": [
+        {
+          "text": "O examinador considerará a correta.",
+          "rationale": "O examinador não escolhe pelo aluno.",
+          "isCorrect": false
+        },
+        {
+          "text": "O examinador considerará a opção como errada.",
+          "rationale": "Correto. Item A.4(g) e (h): indicar mais de uma opção anula a resposta (considerada errada).",
+          "isCorrect": true
+        },
+        {
+          "text": "Ganhará meio ponto pela dúvida técnica razoável.",
+          "rationale": "Não existe pontuação parcial neste quesito.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "Para ser considerado competente (aprovado) na PC-02, qual é a métrica de acertos técnicos exigida?",
+      "hint": "Não basta acertar só o intemperismo ou só o tratamento.",
+      "answerOptions": [
+        {
+          "text": "70% da prova total.",
+          "rationale": "A regra é específica por categoria de análise.",
+          "isCorrect": false
+        },
+        {
+          "text": "Pelo menos 4 acertos em graus de intemperismo E 4 acertos em grau de tratamento.",
+          "rationale": "Correto. Item A.4(i) exige 4 acertos em cada uma das categorias separadamente.",
+          "isCorrect": true
+        },
+        {
+          "text": "Média simples entre intemperismo e tratamento.",
+          "rationale": "É necessário passar em ambos os critérios simultaneamente.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Na Questão 1, o candidato deve informar a documentação utilizada. Por que este passo é tecnicamente vital antes de receber o corpo de prova?",
+      "hint": "Como você vai julgar se está certo ou errado sem a regra?",
+      "answerOptions": [
+        {
+          "text": "Para controle de tempo apenas.",
+          "rationale": "O tempo conta, mas a razão é técnica.",
+          "isCorrect": false
+        },
+        {
+          "text": "Porque o inspetor só pode realizar a inspeção visual se tiver definido a norma de referência previamente.",
+          "rationale": "Correto. A.4(d) implica que a base técnica (norma) precede a análise física.",
+          "isCorrect": true
+        },
+        {
+          "text": "Para verificar a caligrafia do candidato.",
+          "rationale": "Irrelevante para o critério técnico.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Imagine que uma face apresenta Intemperismo Grau A e Tratamento Sa 3 (Metal Branco). Para a finalidade de 'Obra Nova' (Questão 3), esta face deve ser indicada como aceitável?",
+      "hint": "Se o mínimo é Sa 2 1/2, o Sa 3 (que é melhor) passa?",
+      "answerOptions": [
+        {
+          "text": "Sim, pois Sa 3 é superior ao mínimo exigido (Sa 2 ½).",
+          "rationale": "Correto. Se o critério mínimo é Sa 2 1/2, qualquer grau superior (como Sa 3) é tecnicamente aceitável.",
+          "isCorrect": true
+        },
+        {
+          "text": "Não, pois o mínimo é Sa 2 ½ e Sa 3 é excessivo.",
+          "rationale": "Qualidade superior não reprova a peça.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não, pois Grau A não pode ser jateado.",
+          "rationale": "Grau A pode e deve ser jateado.",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
+

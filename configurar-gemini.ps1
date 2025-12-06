@@ -55,3 +55,4 @@ Write-Host "`nConfiguracao concluida!" -ForegroundColor Cyan
 Write-Host "Reinicie o terminal ou execute: . `$PROFILE" -ForegroundColor Yellow
 Write-Host "Depois, voce pode usar o comando 'gemini' diretamente." -ForegroundColor Yellow
 
+

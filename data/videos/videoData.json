@@ -1,0 +1,39 @@
+{
+  "pc01-pc08": [
+    {
+      "id": "1",
+      "title": "Introdução à Inspeção Visual",
+      "duration": "15 min",
+      "completed": false,
+      "videoUrl": "https://www.youtube.com/embed/SEU_VIDEO_ID",
+      "description": "Conceitos fundamentais de inspeção visual"
+    },
+    {
+      "id": "2",
+      "title": "Graus de Intemperismo",
+      "duration": "25 min",
+      "completed": false,
+      "videoUrl": "https://www.youtube.com/embed/SEU_VIDEO_ID",
+      "description": "Classificação A, B, C e D"
+    },
+    {
+      "id": "3",
+      "title": "Mapeamento de Defeitos",
+      "duration": "30 min",
+      "completed": false,
+      "videoUrl": "https://www.youtube.com/embed/SEU_VIDEO_ID",
+      "description": "Técnicas de identificação"
+    }
+  ],
+  "pc02-pc03": [
+    {
+      "id": "1",
+      "title": "Estados Iniciais do Aço",
+      "duration": "20 min",
+      "completed": false,
+      "videoUrl": "https://www.youtube.com/embed/SEU_VIDEO_ID",
+      "description": "Análise de superfícies"
+    }
+  ]
+}
+

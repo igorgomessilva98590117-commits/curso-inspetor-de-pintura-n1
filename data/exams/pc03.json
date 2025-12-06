@@ -1,0 +1,236 @@
+{
+  "title": "Simulado Técnico: PC-03 Análise de Abrasivos",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Na estrutura da prova PC-03, o candidato recebe um texto com um cenário específico. Qual é a informação crítica contida nesse texto que definirá a aprovação ou reprovação na Questão 3 (adequação ao uso)?",
+      "hint": "Sem esse dado numérico, você não sabe o objetivo do jateamento.",
+      "answerOptions": [
+        {
+          "text": "O nome do fornecedor do abrasivo.",
+          "rationale": "Irrelevante para a análise técnica de desempenho.",
+          "isCorrect": false
+        },
+        {
+          "text": "A faixa de perfil de rugosidade a ser alcançada no tratamento de superfície.",
+          "rationale": "Correto. Item A.5(d) e (g). O texto informa a rugosidade alvo para que você verifique se o abrasivo consegue atingi-la.",
+          "isCorrect": true
+        },
+        {
+          "text": "A temperatura do ar no momento da aplicação.",
+          "rationale": "Dado ambiental, não relacionado à escolha granulométrica nesta prova.",
+          "isCorrect": false
+        },
+        {
+          "text": "O prazo de entrega da obra.",
+          "rationale": "Dado de planejamento, não de inspeção de abrasivo.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "A Questão 2 da prova pede para analisar o Certificado de Qualidade. Quais parâmetros específicos do certificado o candidato deve confrontar com a norma?",
+      "hint": "Olhe para os números que definem o tamanho dos grãos.",
+      "answerOptions": [
+        {
+          "text": "A cor e o cheiro do abrasivo.",
+          "rationale": "Subjetivo e não normatizado desta forma.",
+          "isCorrect": false
+        },
+        {
+          "text": "As peneiras, pesos e percentuais indicados na distribuição granulométrica.",
+          "rationale": "Correto. Item A.5(f) especifica a análise de 'peneiras, pesos e percentuais'.",
+          "isCorrect": true
+        },
+        {
+          "text": "O preço e a disponibilidade em estoque.",
+          "rationale": "Critério comercial, não de inspeção.",
+          "isCorrect": false
+        },
+        {
+          "text": "Apenas a data de fabricação.",
+          "rationale": "Insuficiente para determinar a qualidade granulométrica.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "Se a retenção em uma peneira ultrapassa o limite máximo da norma técnica no certificado, qual deve ser o seu parecer?",
+      "hint": "Normas de qualificação são binárias: atende ou não atende.",
+      "answerOptions": [
+        {
+          "text": "Aprovado, pois o desvio é aceitável.",
+          "rationale": "Inspetores N1 não têm autonomia para aceitar desvios de norma.",
+          "isCorrect": false
+        },
+        {
+          "text": "Reprovado (não pode ser utilizado), justificando com o item da norma violado.",
+          "rationale": "Correto. Item A.5(f): deve informar se pode ou não ser utilizado baseado na norma.",
+          "isCorrect": true
+        },
+        {
+          "text": "Aprovado, desde que o perfil de rugosidade seja atingido.",
+          "rationale": "Um material fora de especificação não deve ser usado, independente do resultado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Para justificar tecnicamente a aprovação ou reprovação, o que é OBRIGATÓRIO constar na resposta escrita além do parecer?",
+      "hint": "Não basta dizer 'porque sim', tem que dizer 'onde está escrito'.",
+      "answerOptions": [
+        {
+          "text": "A assinatura do engenheiro da obra.",
+          "rationale": "Não é parte da justificativa técnica da questão.",
+          "isCorrect": false
+        },
+        {
+          "text": "O item e/ou subitem das normas em que se baseou para essa finalidade.",
+          "rationale": "Correto. Item A.5(f) e (g) exigem citar item/subitem dos documentos.",
+          "isCorrect": true
+        },
+        {
+          "text": "O cálculo da pressão do bico de jato.",
+          "rationale": "Não solicitado na prova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "O texto pede perfil alto (80-100 µm). O abrasivo é fino (certificado ok). Qual a conclusão na Questão 3?",
+      "hint": "Grão pequeno faz buraco pequeno.",
+      "answerOptions": [
+        {
+          "text": "O abrasivo atende ao perfil.",
+          "rationale": "Fisicamente impossível um grão fino abrir perfil profundo.",
+          "isCorrect": false
+        },
+        {
+          "text": "O abrasivo NÃO atende ao perfil informado, pois sua granulometria fina gera rugosidade baixa.",
+          "rationale": "Correto. A análise técnica deve concluir pela incompatibilidade.",
+          "isCorrect": true
+        },
+        {
+          "text": "O abrasivo atende, pois o certificado foi aprovado na Questão 2.",
+          "rationale": "Erro comum. Material conforme não garante adequação ao uso.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "O texto pede perfil baixo (20-40 µm). O abrasivo é muito grosso. Qual o parecer técnico?",
+      "hint": "Grão grande faz buraco grande.",
+      "answerOptions": [
+        {
+          "text": "Atende, pois quanto maior o grão, melhor a limpeza.",
+          "rationale": "Limpeza não é perfil. O perfil ficará excessivo.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não atende, pois a granulometria grossa gerará um perfil de rugosidade acima do máximo especificado.",
+          "rationale": "Correto. O abrasivo grosso violará o limite máximo da rugosidade.",
+          "isCorrect": true
+        },
+        {
+          "text": "Atende, bastando afastar o bico de jato.",
+          "rationale": "Procedimento de aplicação não corrige escolha errada de abrasivo nesta prova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "Antes de iniciar a análise, o que o candidato deve preencher na Questão 1 do formulário da PC-03?",
+      "hint": "Qual é a base de toda inspeção?",
+      "answerOptions": [
+        {
+          "text": "Informar a documentação (normas) utilizada para realizar o procedimento.",
+          "rationale": "Correto. Item A.5(e).",
+          "isCorrect": true
+        },
+        {
+          "text": "O nome do fabricante do abrasivo.",
+          "rationale": "Informação secundária.",
+          "isCorrect": false
+        },
+        {
+          "text": "O cálculo de consumo de abrasivo.",
+          "rationale": "Não faz parte desta prova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "Qual é o tempo limite para a realização da prova PC-03?",
+      "hint": "Gestão do tempo é fundamental.",
+      "answerOptions": [
+        {
+          "text": "30 minutos.",
+          "rationale": "Tempo da PC-06.",
+          "isCorrect": false
+        },
+        {
+          "text": "40 minutos.",
+          "rationale": "Correto. Item A.5(h) e Tabela 1.",
+          "isCorrect": true
+        },
+        {
+          "text": "1 hora.",
+          "rationale": "Tempo da PC-01.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Na PC-03, é fornecido ao candidato um corpo de prova físico para jateamento?",
+      "hint": "Esta prova é prática de campo ou análise documental?",
+      "answerOptions": [
+        {
+          "text": "Sim, o candidato deve jatear uma placa.",
+          "rationale": "Não há operação de jato na PC-03.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não, é fornecido um formulário com texto e certificado.",
+          "rationale": "Correto. A prova é baseada em análise de dados fornecidos.",
+          "isCorrect": true
+        },
+        {
+          "text": "Sim, para medir a rugosidade.",
+          "rationale": "Isso seria na PC-06 (Medição de rugosidade).",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Se o candidato aprovar o uso do abrasivo na Questão 2 (está na norma), mas reprovar na Questão 3 (não atende ao perfil), essa contradição é um erro?",
+      "hint": "Material Bom vs Aplicação Correta.",
+      "answerOptions": [
+        {
+          "text": "Sim, se aprovou um, tem que aprovar o outro.",
+          "rationale": "Incorreto. São análises independentes.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não, é a análise técnica correta. Um material pode ser normatizado (bom), mas inadequado para o perfil desejado.",
+          "rationale": "Correto. Questão 2 avalia conformidade do material; Questão 3 avalia adequação ao uso específico. São critérios diferentes.",
+          "isCorrect": true
+        },
+        {
+          "text": "Sim, ele deveria reprovar o certificado se o perfil não der.",
+          "rationale": "O certificado só é reprovado se o material estiver fora da norma de fabricação.",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
+

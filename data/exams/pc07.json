@@ -1,0 +1,221 @@
+{
+  "title": "Simulado Técnico: PC-07 Teste de Descontinuidade",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Para realizar o teste de descontinuidade, o candidato deve justificar a escolha do método (seca ou úmida). O que deve constar nessa justificativa?",
+      "hint": "Não basta escolher, tem que provar por que escolheu.",
+      "answerOptions": [
+        {
+          "text": "Apenas 'Via Úmida' ou 'Via Seca'.",
+          "rationale": "Incompleto.",
+          "isCorrect": false
+        },
+        {
+          "text": "Justificar a escolha citando o item/subitem da norma utilizada no teste.",
+          "rationale": "Correto. Conforme item A.9(d).",
+          "isCorrect": true
+        },
+        {
+          "text": "A espessura da tinta medida.",
+          "rationale": "A espessura é o dado de entrada, a norma é a justificativa.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "Ao utilizar o método de Via Úmida, qual tensão elétrica o candidato deve indicar?",
+      "hint": "A norma geralmente dá uma faixa de valores (Mín e Máx).",
+      "answerOptions": [
+        {
+          "text": "Sempre 9 volts.",
+          "rationale": "Valor fixo incorreto sem consulta à norma.",
+          "isCorrect": false
+        },
+        {
+          "text": "Uma tensão situada entre a maior e a menor informada na norma ABNT correspondente.",
+          "rationale": "Correto. Item A.9(h).",
+          "isCorrect": true
+        },
+        {
+          "text": "A tensão máxima do aparelho.",
+          "rationale": "Pode queimar a pintura se exceder a norma.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "O candidato encontra uma descontinuidade a 0,5 cm da borda da placa. Como proceder?",
+      "hint": "Cuidado com o 'efeito de borda'.",
+      "answerOptions": [
+        {
+          "text": "Mapear normalmente.",
+          "rationale": "Incorreto. Região de exclusão.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não considerar no corpo de prova descontinuidades localizadas a 1 cm das bordas.",
+          "rationale": "Correto. Item A.9(j).",
+          "isCorrect": true
+        },
+        {
+          "text": "Reprovar a peça.",
+          "rationale": "Não se reprova por defeito na zona morta.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Se encontrar descontinuidades, o candidato deve escrever 'REPROVADO' no laudo?",
+      "hint": "Leia atentamente a instrução sobre o laudo negativo.",
+      "answerOptions": [
+        {
+          "text": "Sim, qualquer furo reprova.",
+          "rationale": "Lógica comum, mas contrária à instrução específica desta prova.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não. Não é necessário informar que o teste está reprovado se encontrar alguma descontinuidade.",
+          "rationale": "Correto. Item A.9(j). Apenas mapeie.",
+          "isCorrect": true
+        },
+        {
+          "text": "Sim, se forem muitos furos.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "Além da coordenada do ponto, o que mais deve ser identificado para cada descontinuidade?",
+      "hint": "O croqui é dividido em grandes áreas numeradas.",
+      "answerOptions": [
+        {
+          "text": "A cor da faísca.",
+          "rationale": "Irrelevante.",
+          "isCorrect": false
+        },
+        {
+          "text": "O quadrante onde a descontinuidade foi encontrada.",
+          "rationale": "Correto. Item A.9(j) exige numerar o quadrante.",
+          "isCorrect": true
+        },
+        {
+          "text": "O tamanho do furo.",
+          "rationale": "Não solicitado.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "Qual é o limite máximo de constatações a serem registradas?",
+      "hint": "Para não ficar o dia todo mapeando uma peça peneira.",
+      "answerOptions": [
+        {
+          "text": "Todas as que encontrar.",
+          "rationale": "Pode ser inviável.",
+          "isCorrect": false
+        },
+        {
+          "text": "Um máximo de 10 constatações.",
+          "rationale": "Correto. Item A.9(j).",
+          "isCorrect": true
+        },
+        {
+          "text": "5 constatações.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "Qual é o tempo para a prova PC-07?",
+      "hint": "É a prova mais longa.",
+      "answerOptions": [
+        {
+          "text": "1 hora.",
+          "rationale": "Pouco tempo.",
+          "isCorrect": false
+        },
+        {
+          "text": "1 hora e 30 minutos.",
+          "rationale": "Correto. Tabela 1 e item A.9(k).",
+          "isCorrect": true
+        },
+        {
+          "text": "40 minutos.",
+          "rationale": "Tempo das outras provas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "Qual é o espaçamento das linhas e colunas no croqui de mapeamento?",
+      "hint": "Ajuda a definir a escala X, Y.",
+      "answerOptions": [
+        {
+          "text": "5 cm.",
+          "rationale": "Espaçamento da PC-06.",
+          "isCorrect": false
+        },
+        {
+          "text": "10 cm.",
+          "rationale": "Correto. Item A.9(j).",
+          "isCorrect": true
+        },
+        {
+          "text": "1 cm.",
+          "rationale": "Muito pequeno.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Para Via Seca, como se define a tensão?",
+      "hint": "Não é chutar um valor.",
+      "answerOptions": [
+        {
+          "text": "Considerar a norma ABNT correspondente para indicar a tensão.",
+          "rationale": "Correto. Item A.9(g).",
+          "isCorrect": true
+        },
+        {
+          "text": "Usa sempre 1000V.",
+          "rationale": "A tensão varia com a espessura.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Quando o candidato deve escrever 'APROVADO'?",
+      "hint": "Condição de excelência.",
+      "answerOptions": [
+        {
+          "text": "Sempre.",
+          "rationale": "Incorreto.",
+          "isCorrect": false
+        },
+        {
+          "text": "Caso não encontre nenhuma descontinuidade.",
+          "rationale": "Correto. Item A.9(j).",
+          "isCorrect": true
+        },
+        {
+          "text": "Quando encontrar menos de 5 defeitos.",
+          "rationale": "Defeito é defeito.",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
+

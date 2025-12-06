@@ -52,17 +52,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
         <div className="h-16 flex items-center justify-between px-4 border-b border-[#1a1a1a] dark:border-slate-200 transition-colors">
           {!isCollapsed && (
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">IM</span>
+              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
+                <span className="text-white dark:text-black font-bold text-sm">IM</span>
               </div>
-              <span className="font-bold text-white dark:text-slate-900 text-lg tracking-tight transition-colors">
-                INSPETOR<span className="text-amber-500">MASTER</span>
+              <span className="font-bold text-white dark:text-black text-lg tracking-tight transition-colors">
+                INSPETOR<span className="text-amber-500 dark:text-orange-500">MASTER</span>
               </span>
             </div>
           )}
           {isCollapsed && (
-            <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center mx-auto">
-              <span className="text-white font-bold text-sm">IM</span>
+            <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center mx-auto shadow-lg shadow-orange-500/20">
+              <span className="text-white dark:text-black font-bold text-sm">IM</span>
             </div>
           )}
           <button
@@ -89,13 +89,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange }) => {
                     w-full flex items-center gap-3 px-3 py-3 rounded-lg
                     transition-all duration-200 group
                     ${isActive 
-                      ? 'bg-gradient-to-r from-amber-500/20 to-orange-600/20 dark:from-orange-50 dark:to-amber-50 text-amber-400 dark:text-orange-600 border-l-2 border-amber-500 dark:border-orange-400' 
+                      ? 'bg-gradient-to-r from-amber-500/20 to-orange-600/20 dark:from-slate-100 dark:to-slate-50 text-amber-400 dark:text-slate-700 border-l-2 border-amber-500 dark:border-slate-400' 
                       : 'text-slate-400 dark:text-slate-500 hover:text-white dark:hover:text-slate-800 hover:bg-[#1a1a1a] dark:hover:bg-slate-100'
                     }
                   `}
                   title={isCollapsed ? item.label : undefined}
                 >
-                  <item.icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-amber-500 dark:text-orange-500' : 'dark:text-slate-400'}`} />
+                  <item.icon className={`w-5 h-5 flex-shrink-0 ${isActive ? 'text-amber-500 dark:text-slate-600' : 'dark:text-slate-400'}`} />
                   {!isCollapsed && (
                     <span className="font-medium text-sm">{item.label}</span>
                   )}

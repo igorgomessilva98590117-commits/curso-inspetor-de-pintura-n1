@@ -1,0 +1,276 @@
+{
+  "title": "Simulado Procedimental: PC-01 Inspeção Visual",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "question": "Qual é o tempo máximo permitido para a realização da prova prática PC-01 (Inspeção visual de superfícies de aço para pintura ou repintura)?",
+      "hint": "Consulte a tabela de tempos de realização por tipo de prova nas instruções gerais.",
+      "answerOptions": [
+        {
+          "text": "30 minutos",
+          "rationale": "Este tempo é referente a outras provas, como a PC-06 ou PC-08.",
+          "isCorrect": false
+        },
+        {
+          "text": "40 minutos",
+          "rationale": "Este é o tempo para provas como PC-02, PC-03, PC-04 e PC-05.",
+          "isCorrect": false
+        },
+        {
+          "text": "1 hora",
+          "rationale": "Correto. O tempo estipulado para o mapeamento de falhas e defeitos na PC-01 é de 1 hora.",
+          "isCorrect": true
+        },
+        {
+          "text": "1 hora e 30 minutos",
+          "rationale": "Este tempo refere-se à prova PC-07 (Teste de descontinuidade).",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 2,
+      "question": "Durante a execução da inspeção visual na PC-01, qual é a restrição específica quanto ao uso de Equipamentos de Proteção Individual (EPI) para as mãos?",
+      "hint": "A inspeção visual muitas vezes requer o tato para confirmar certas condições da superfície.",
+      "answerOptions": [
+        {
+          "text": "É obrigatório o uso de luvas de raspa para proteção contra cortes.",
+          "rationale": "O uso de luvas impediria a sensibilidade tátil necessária para certos tipos de inspeção visual detalhada.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não é permitido o uso de luva ou similar.",
+          "rationale": "Correto. A instrução determina que a inspeção seja feita a 'olho nu' e proíbe o uso de luvas para garantir a sensibilidade tátil e visual direta.",
+          "isCorrect": true
+        },
+        {
+          "text": "É permitido apenas o uso de luvas cirúrgicas.",
+          "rationale": "As instruções proíbem o uso de qualquer tipo de luva ou similar durante esta prova específica.",
+          "isCorrect": false
+        },
+        {
+          "text": "O uso de luvas é opcional, dependendo da condição da peça.",
+          "rationale": "A regra é estrita quanto à não utilização de luvas para esta prova.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 3,
+      "question": "Ao identificar uma falha ou defeito na estrutura, como o candidato deve proceder corretamente para mapeá-lo no formulário de prova?",
+      "hint": "O procedimento exige uma marcação específica no local exato do defeito e uma referência externa.",
+      "answerOptions": [
+        {
+          "text": "Circular a área do defeito e escrever o nome do defeito dentro do círculo.",
+          "rationale": "Escrever o nome diretamente no desenho poluiria o croqui e não segue o padrão exigido de numeração.",
+          "isCorrect": false
+        },
+        {
+          "text": "Marcar um 'X' sobre o defeito e listar os defeitos no verso da folha.",
+          "rationale": "A marcação exigida não é um 'X', e a identificação deve seguir um padrão numérico conectado à tabela.",
+          "isCorrect": false
+        },
+        {
+          "text": "Marcar com asterisco (*) o local, traçar uma linha para fora da vista e colocar um número na ponta.",
+          "rationale": "Correto. Esta é a metodologia padrão exigida para garantir clareza no mapeamento e correlação com a tabela de resultados.",
+          "isCorrect": true
+        },
+        {
+          "text": "Pintar a área afetada no desenho com caneta vermelha.",
+          "rationale": "O uso de cores ou preenchimento não é o método padrão de mapeamento descrito nas instruções.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 4,
+      "question": "Quantos tipos diferentes de falhas e defeitos o candidato deve identificar na estrutura inspecionada para cumprir o requisito da prova?",
+      "hint": "O exame exige uma variedade mínima de identificações para testar a abrangência do conhecimento visual do candidato.",
+      "answerOptions": [
+        {
+          "text": "3 tipos diferentes",
+          "rationale": "Este número é insuficiente segundo os requisitos da prova PC-01.",
+          "isCorrect": false
+        },
+        {
+          "text": "6 tipos diferentes",
+          "rationale": "Correto. As instruções especificam que o candidato deve identificar 6 diferentes tipos de falhas e defeitos.",
+          "isCorrect": true
+        },
+        {
+          "text": "10 tipos diferentes",
+          "rationale": "Este é o limite máximo de constatações para a prova de descontinuidade (PC-07), não para a PC-01.",
+          "isCorrect": false
+        },
+        {
+          "text": "Todos os defeitos presentes na peça",
+          "rationale": "Embora o ideal seja ver tudo, a prova exige especificamente a identificação de 6 tipos diferentes para avaliação.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 5,
+      "question": "Com relação à nomenclatura das falhas e defeitos encontrados, como o candidato deve proceder ao preencher a tabela?",
+      "hint": "Pense na padronização técnica. Termos populares ou regionais são aceitos?",
+      "answerOptions": [
+        {
+          "text": "Pode utilizar sinônimos ou termos populares, desde que descrevam bem o defeito (ex: 'casca de laranja').",
+          "rationale": "A prova exige terminologia técnica precisa. Termos coloquiais ou sinônimos não padronizados podem levar à perda de pontos.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não serão considerados sinônimos; deve-se usar a nomenclatura técnica correta.",
+          "rationale": "Correto. As instruções alertam explicitamente que sinônimos (como 'chiclete' para goma de mascar) não serão considerados.",
+          "isCorrect": true
+        },
+        {
+          "text": "Deve criar uma legenda própria se não souber o nome técnico.",
+          "rationale": "A invenção de termos não é permitida; o inspetor deve conhecer a nomenclatura normativa.",
+          "isCorrect": false
+        },
+        {
+          "text": "Pode usar o nome em inglês se a norma de referência for internacional.",
+          "rationale": "A prova é baseada nas normas fornecidas e no idioma do exame, exigindo a nomenclatura padrão prevista no treinamento.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 6,
+      "question": "Qual é a relação entre a prova PC-01 e a prova PC-08?",
+      "hint": "A PC-01 é prática de mapeamento, enquanto a PC-08 foca no entendimento teórico do que foi mapeado.",
+      "answerOptions": [
+        {
+          "text": "Não há relação, são provas independentes sobre corpos de prova diferentes.",
+          "rationale": "Incorreto. A PC-08 utiliza o mesmo formulário e resultados da PC-01.",
+          "isCorrect": false
+        },
+        {
+          "text": "A PC-08 é a repetição da PC-01 para confirmação dos resultados.",
+          "rationale": "A PC-08 não é uma repetição, mas uma etapa analítica subsequente.",
+          "isCorrect": false
+        },
+        {
+          "text": "A PC-08 refere-se à conceituação das falhas e defeitos identificados e mapeados na PC-01.",
+          "rationale": "Correto. Na PC-08, você deve conceituar (dar a definição técnica) das falhas que você mesmo encontrou na PC-01.",
+          "isCorrect": true
+        },
+        {
+          "text": "A PC-01 é a teoria e a PC-08 é a prática de campo.",
+          "rationale": "Ambas são partes do exame prático, mas a PC-01 é o mapeamento visual e a PC-08 é a análise conceitual desse mapeamento.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 7,
+      "question": "Se um candidato encontrar uma falha em uma vista específica da estrutura, onde ele deve mapeá-la no formulário?",
+      "hint": "A precisão na localização é fundamental para um relatório de inspeção útil.",
+      "answerOptions": [
+        {
+          "text": "Em qualquer vista que tenha espaço livre no papel.",
+          "rationale": "Mapear na vista errada indica incapacidade de localização espacial e gera reprovação no item.",
+          "isCorrect": false
+        },
+        {
+          "text": "Apenas na tabela de resumo, sem necessidade de marcar no desenho.",
+          "rationale": "O mapeamento visual no desenho é uma exigência obrigatória da prova PC-01.",
+          "isCorrect": false
+        },
+        {
+          "text": "Na vista correspondente onde a falha está sendo identificada.",
+          "rationale": "Correto. As falhas devem ser mapeadas exatamente na representação gráfica da vista onde foram encontradas fisicamente.",
+          "isCorrect": true
+        },
+        {
+          "text": "No campo de observações gerais.",
+          "rationale": "O campo de observações não substitui o mapeamento gráfico exigido.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 8,
+      "question": "Qual é o critério de distribuição de falhas que o candidato deve seguir ao analisar as diferentes vistas da estrutura na PC-01?",
+      "hint": "O exame busca avaliar se o inspetor verificou toda a peça, não apenas uma parte.",
+      "answerOptions": [
+        {
+          "text": "Identificar todas as falhas em uma única vista para ganhar tempo.",
+          "rationale": "Concentrar a inspeção em uma área ignora o restante da estrutura e descumpre o critério de distribuição.",
+          "isCorrect": false
+        },
+        {
+          "text": "Identificar pelo menos uma falha ou defeito em cada vista da estrutura identificada na prova.",
+          "rationale": "Correto. Isso demonstra que o inspetor avaliou a peça em sua totalidade e é capaz de encontrar problemas em diferentes geometrias.",
+          "isCorrect": true
+        },
+        {
+          "text": "Não é necessário identificar falhas em todas as vistas se não houver defeitos graves.",
+          "rationale": "A instrução exige a identificação em cada vista, implicando que haverá defeitos a serem encontrados em todas elas.",
+          "isCorrect": false
+        },
+        {
+          "text": "Escolher as vistas mais fáceis de desenhar.",
+          "rationale": "A escolha não é baseada em facilidade, mas na obrigatoriedade de cobrir todas as vistas indicadas.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 9,
+      "question": "Qual informação deve ser preenchida no formulário referente ao procedimento utilizado?",
+      "hint": "Todo inspetor deve basear seu trabalho em documentos de referência.",
+      "answerOptions": [
+        {
+          "text": "Apenas a data e a hora.",
+          "rationale": "Embora necessários, não são a informação sobre o 'procedimento' técnico.",
+          "isCorrect": false
+        },
+        {
+          "text": "Informar a documentação utilizada para realizar o procedimento.",
+          "rationale": "Correto. É essencial rastrear qual norma ou procedimento foi seguido durante a inspeção.",
+          "isCorrect": true
+        },
+        {
+          "text": "O nome do fabricante da tinta.",
+          "rationale": "Esta informação pode não estar disponível ou não ser o foco do procedimento de inspeção visual genérico da prova.",
+          "isCorrect": false
+        },
+        {
+          "text": "A temperatura ambiente no momento da prova.",
+          "rationale": "Dados climáticos são importantes no relatório diário, mas a questão pede especificamente sobre o 'procedimento utilizado'.",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "questionNumber": 10,
+      "question": "Caso o candidato tente usar um corretivo (branquinho) para apagar um erro no mapeamento, o que acontecerá?",
+      "hint": "Considere as regras gerais de preenchimento de documentos oficiais da qualificação.",
+      "answerOptions": [
+        {
+          "text": "É permitido, desde que o resultado final fique limpo.",
+          "rationale": "O uso de corretivos é explicitamente proibido nas instruções gerais.",
+          "isCorrect": false
+        },
+        {
+          "text": "Não é permitido o uso de corretivos.",
+          "rationale": "Correto. As instruções gerais proíbem o uso de corretivos.",
+          "isCorrect": true
+        },
+        {
+          "text": "É permitido apenas na folha de rascunho.",
+          "rationale": "Não há menção de permissão em rascunhos, e a proibição visa a integridade do documento.",
+          "isCorrect": false
+        },
+        {
+          "text": "O exame será anulado imediatamente.",
+          "rationale": "Embora proibido, a anulação imediata ocorre por fraude ou consulta não permitida. O uso de corretivo pode invalidar a questão ou o documento, mas a regra direta é a proibição do uso.",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
+
