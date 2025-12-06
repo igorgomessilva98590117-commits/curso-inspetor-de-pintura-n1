@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { InspectorTip } from '../components/InspectorTip';
-import { Info } from 'lucide-react';
+import { Info, ZoomIn, ZoomOut } from 'lucide-react';
 
-// Using functional component for the interactive slider
 export const Practical: React.FC = () => {
-  const [grade, setGrade] = useState<'A' | 'B' | 'C' | 'D'>('A');
+  const [grade, setGrade] = useState<'A' | 'B' | 'C' | 'D'>('B');
   const [cleaning, setCleaning] = useState<'St3' | 'Sa2' | 'Sa2.5' | 'Sa3'>('Sa2.5');
+  const [showOriginal, setShowOriginal] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const gradeInfo = {
     A: "Superfície de aço com a carepa de laminação intacta em praticamente toda a superfície e sem corrosão.",
@@ -17,116 +18,210 @@ export const Practical: React.FC = () => {
   const cleaningInfo = {
     St3: "Limpeza Mecânica Manual/Motriz: Brilho metálico aparente, mas sem remover toda a carepa/ferrugem profunda.",
     Sa2: "Jateamento Comercial: Remove quase toda a carepa/ferrugem. A superfície fica acinzentada.",
-    'Sa2.5': "Metal Quase Branco: O padrão mais comum na indústria. 95% da área livre de resíduos visíveis. O restante são apenas manchas leves.",
-    Sa3: "Metal Branco: 100% livre de qualquer contaminante. Aparência metálica uniforme. Exigido para inspeções rigorosas e imersão."
+    'Sa2.5': "Metal Quase Branco: O padrão mais comum na indústria. 95% da área livre de resíduos visíveis.",
+    Sa3: "Metal Branco: 100% livre de qualquer contaminante. Aparência metálica uniforme."
   };
 
+  // Função para obter o caminho da imagem baseado no grau e limpeza
+  const getImagePath = (g: string, c: string): string => {
+    const basePath = '/images/surfaces/cleaning/';
+    
+    // Mapeamento de nomes de arquivo
+    const cleaningMap: Record<string, string> = {
+      'St3': 'St3',
+      'Sa2': 'Sa2',
+      'Sa2.5': 'Sa-2-1-2',
+      'Sa3': 'Sa-3'
+    };
+
+    // Para grau A, só temos algumas combinações
+    if (g === 'A') {
+      if (c === 'St3') return `${basePath}A-St3.png`;
+      if (c === 'Sa2.5') return `${basePath}A-Sa-2-1-2.png`;
+      // Fallback para outras combinações de A
+      return `${basePath}A-Sa-2-1-2.png`;
+    }
+
+    // Para B, C, D temos mais combinações
+    const cleaningCode = cleaningMap[c] || 'Sa-2-1-2';
+    return `${basePath}${g}-${cleaningCode}.png`;
+  };
+
+  // Caminho da imagem do grau original (sem limpeza)
+  const getOriginalGradePath = (g: string): string => {
+    return `/images/surfaces/cleaning/Grau-${g}.png`;
+  };
+
+  const currentImage = showOriginal ? getOriginalGradePath(grade) : getImagePath(grade, cleaning);
+
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      <div className="border-b border-slate-700 pb-4">
-        <h2 className="text-3xl font-bold text-white">Módulo Prático: Tratamento de Superfície (N-9)</h2>
-        <p className="text-slate-400 mt-2">Simulador Visual: Entenda a base de uma boa pintura.</p>
+    <div className="max-w-5xl mx-auto space-y-8">
+      <div className="border-b border-slate-700 dark:border-slate-200 pb-4">
+        <h2 className="text-3xl font-bold text-white dark:text-slate-900">Módulo Prático: Tratamento de Superfície (N-9)</h2>
+        <p className="text-slate-400 dark:text-slate-600 mt-2">Simulador Visual: Entenda a base de uma boa pintura.</p>
       </div>
 
       {/* Simulator Container */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         
         {/* Controls */}
         <div className="space-y-6">
           {/* Weathering Grade Selector */}
-          <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-            <h3 className="font-bold text-petro-yellow mb-4">1. Grau de Intemperismo (Original)</h3>
+          <div className="bg-slate-800 dark:bg-white p-6 rounded-xl border border-slate-700 dark:border-slate-200 shadow-lg">
+            <h3 className="font-bold text-amber-400 dark:text-amber-600 mb-4 flex items-center gap-2">
+              <span className="w-6 h-6 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">1</span>
+              Grau de Intemperismo (Original)
+            </h3>
             <div className="flex gap-2">
               {(['A', 'B', 'C', 'D'] as const).map((g) => (
                 <button
                   key={g}
                   onClick={() => setGrade(g)}
-                  className={`flex-1 py-2 rounded font-bold transition-all ${
+                  className={`flex-1 py-3 rounded-lg font-bold transition-all ${
                     grade === g 
-                    ? 'bg-petro-green text-white ring-2 ring-green-400' 
-                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/30' 
+                    : 'bg-slate-700 dark:bg-slate-100 text-slate-400 dark:text-slate-600 hover:bg-slate-600 dark:hover:bg-slate-200'
                   }`}
                 >
                   Grau {g}
                 </button>
               ))}
             </div>
-            <p className="mt-4 text-sm text-slate-300 min-h-[60px]">{gradeInfo[grade]}</p>
+            <p className="mt-4 text-sm text-slate-300 dark:text-slate-600 min-h-[50px]">{gradeInfo[grade]}</p>
           </div>
 
           {/* Cleaning Standard Selector */}
-          <div className="bg-slate-800 p-6 rounded-xl border border-slate-700">
-            <h3 className="font-bold text-petro-yellow mb-4">2. Padrão de Limpeza</h3>
+          <div className="bg-slate-800 dark:bg-white p-6 rounded-xl border border-slate-700 dark:border-slate-200 shadow-lg">
+            <h3 className="font-bold text-amber-400 dark:text-amber-600 mb-4 flex items-center gap-2">
+              <span className="w-6 h-6 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">2</span>
+              Padrão de Limpeza
+            </h3>
             <div className="grid grid-cols-2 gap-2">
               {(['St3', 'Sa2', 'Sa2.5', 'Sa3'] as const).map((c) => (
                 <button
                   key={c}
-                  onClick={() => setCleaning(c)}
-                  className={`py-2 px-3 rounded text-sm font-bold transition-all ${
-                    cleaning === c 
-                    ? 'bg-blue-600 text-white ring-2 ring-blue-400' 
-                    : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
+                  onClick={() => { setCleaning(c); setShowOriginal(false); }}
+                  className={`py-3 px-3 rounded-lg text-sm font-bold transition-all ${
+                    cleaning === c && !showOriginal
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/30' 
+                    : 'bg-slate-700 dark:bg-slate-100 text-slate-400 dark:text-slate-600 hover:bg-slate-600 dark:hover:bg-slate-200'
                   }`}
                 >
-                  {c.replace('Sa', 'Sa ')}
+                  {c === 'Sa2.5' ? 'Sa 2½' : c.replace('Sa', 'Sa ')}
                 </button>
               ))}
             </div>
-            <p className="mt-4 text-sm text-slate-300 min-h-[60px]">{cleaningInfo[cleaning]}</p>
+            <p className="mt-4 text-sm text-slate-300 dark:text-slate-600 min-h-[50px]">{cleaningInfo[cleaning]}</p>
           </div>
+
+          {/* Toggle Original */}
+          <button
+            onClick={() => setShowOriginal(!showOriginal)}
+            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 ${
+              showOriginal 
+              ? 'bg-red-500 text-white shadow-lg shadow-red-500/30' 
+              : 'bg-slate-700 dark:bg-slate-100 text-slate-300 dark:text-slate-700 hover:bg-slate-600 dark:hover:bg-slate-200'
+            }`}
+          >
+            {showOriginal ? '🔴 Mostrando: Estado Original (Sem Limpeza)' : '👁️ Ver Estado Original (Antes da Limpeza)'}
+          </button>
         </div>
 
-        {/* Visualizer (Abstract Representation due to no image assets) */}
-        <div className="bg-black rounded-xl border-4 border-slate-700 p-1 relative overflow-hidden flex flex-col items-center justify-center min-h-[300px]">
-          <div className="absolute top-2 left-2 bg-black/70 px-2 py-1 rounded text-xs text-white z-10">Simulação Visual</div>
-          
-          {/* Dynamic Visual Layer */}
-          <div className={`w-full h-full absolute inset-0 transition-all duration-700`}
-            style={{
-              backgroundColor: 
-                cleaning === 'Sa3' ? '#e2e8f0' : // White metal
-                cleaning === 'Sa2.5' ? '#94a3b8' : // Near white
-                cleaning === 'Sa2' ? '#64748b' : // Commercial
-                '#475569', // St3
-              backgroundImage: 
-                cleaning === 'Sa3' ? 'none' :
-                cleaning === 'Sa2.5' ? 'radial-gradient(#475569 1px, transparent 1px)' :
-                cleaning === 'Sa2' ? 'radial-gradient(#334155 2px, transparent 2px)' :
-                'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.2\' fill-rule=\'evenodd\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'3\'/%3E%3Ccircle cx=\'13\' cy=\'13\' r=\'3\'/%3E%3C/g%3E%3C/svg%3E")',
-              backgroundSize: cleaning === 'Sa2.5' ? '40px 40px' : cleaning === 'Sa2' ? '10px 10px' : 'auto'
-            }}
+        {/* Visualizer with Real Images */}
+        <div className="space-y-4">
+          <div 
+            className={`bg-slate-900 dark:bg-slate-100 rounded-xl border-4 ${showOriginal ? 'border-red-500' : 'border-slate-700 dark:border-slate-300'} relative overflow-hidden transition-all duration-300 ${isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
+            style={{ minHeight: '350px' }}
+            onClick={() => setIsZoomed(!isZoomed)}
           >
-             {/* Overlay for rust based on Grade if cleaning is poor */}
-             {(cleaning === 'St3' || cleaning === 'Sa2') && grade === 'D' && (
-                <div className="absolute inset-0 bg-red-900/20 mix-blend-overlay pointer-events-none"></div>
-             )}
+            {/* Label */}
+            <div className={`absolute top-3 left-3 ${showOriginal ? 'bg-red-500' : 'bg-black/70'} px-3 py-1.5 rounded-lg text-xs text-white z-20 font-medium`}>
+              {showOriginal ? `Grau ${grade} - Original` : `${cleaning === 'Sa2.5' ? 'Sa 2½' : cleaning} sobre Grau ${grade}`}
+            </div>
+
+            {/* Zoom indicator */}
+            <div className="absolute top-3 right-3 bg-black/70 p-2 rounded-lg z-20">
+              {isZoomed ? <ZoomOut className="w-4 h-4 text-white" /> : <ZoomIn className="w-4 h-4 text-white" />}
+            </div>
+            
+            {/* Image */}
+            <div className={`w-full h-full transition-transform duration-500 ${isZoomed ? 'scale-150' : 'scale-100'}`}>
+              <img 
+                src={currentImage}
+                alt={showOriginal ? `Grau ${grade} - Estado Original` : `${cleaning} sobre Grau ${grade}`}
+                className="w-full h-full object-cover"
+                style={{ minHeight: '350px' }}
+                onError={(e) => {
+                  // Fallback se a imagem não existir
+                  (e.target as HTMLImageElement).src = '/images/surfaces/cleaning/Grau-B.png';
+                }}
+              />
+            </div>
           </div>
 
-          <div className="z-20 bg-slate-900/80 p-4 rounded text-center backdrop-blur-sm">
-            <h4 className="text-xl font-bold text-white mb-1">
-              Resultado: {cleaning.replace('Sa', 'Sa ')} sobre Grau {grade}
-            </h4>
-            <span className="text-xs text-slate-400 uppercase tracking-widest">Visualização Aproximada</span>
+          {/* Info Card */}
+          <div className="bg-slate-800 dark:bg-white p-4 rounded-xl border border-slate-700 dark:border-slate-200">
+            <div className="flex items-center gap-3">
+              <div className={`w-3 h-3 rounded-full ${showOriginal ? 'bg-red-500' : 'bg-green-500'} animate-pulse`}></div>
+              <div>
+                <h4 className="text-white dark:text-slate-900 font-semibold">
+                  {showOriginal ? 'Estado Inicial da Superfície' : 'Resultado após Limpeza'}
+                </h4>
+                <p className="text-slate-400 dark:text-slate-600 text-sm">
+                  {showOriginal 
+                    ? `Grau ${grade} de intemperismo conforme ISO 8501-1` 
+                    : `Padrão ${cleaning === 'Sa2.5' ? 'Sa 2½' : cleaning} conforme ISO 8501-1 / N-9`
+                  }
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Tips Section */}
       <div className="grid md:grid-cols-2 gap-6 mt-8">
          <InspectorTip>
-            <strong>Pulo do Gato (PC-02):</strong> Na prova prática, diferencie Sa 2 1/2 de Sa 3 olhando o fundo dos pites. Se o fundo do pite estiver escuro, é Sa 2 1/2. Se estiver brilhante/claro, é Sa 3.
+            <strong>Pulo do Gato (PC-02):</strong> Na prova prática, diferencie Sa 2½ de Sa 3 olhando o fundo dos pites. Se o fundo do pite estiver escuro, é Sa 2½. Se estiver brilhante/claro, é Sa 3.
          </InspectorTip>
          
-         <div className="bg-slate-800 p-4 rounded-lg border border-slate-700 flex gap-4 items-start">
+         <div className="bg-slate-800 dark:bg-white p-4 rounded-lg border border-slate-700 dark:border-slate-200 flex gap-4 items-start">
             <Info className="text-blue-400 flex-shrink-0 mt-1" />
             <div>
-              <h4 className="font-bold text-white">Jateamento vs. Hidrojateamento (WJ)</h4>
-              <p className="text-sm text-slate-400 mt-1">
-                Jateamento abrasivo cria <strong>rugosidade (perfil de ancoragem)</strong>. 
-                Hidrojateamento (WJ) apenas limpa, <strong>não cria rugosidade</strong>. 
-                Se for pintar sobre WJ, certifique-se que o metal já tinha perfil anterior ou use tintas tolerantes.
+              <h4 className="font-bold text-white dark:text-slate-900">Jateamento vs. Hidrojateamento (WJ)</h4>
+              <p className="text-sm text-slate-400 dark:text-slate-600 mt-1">
+                Jateamento abrasivo cria <strong className="text-white dark:text-slate-800">rugosidade (perfil de ancoragem)</strong>. 
+                Hidrojateamento (WJ) apenas limpa, <strong className="text-white dark:text-slate-800">não cria rugosidade</strong>. 
               </p>
             </div>
          </div>
+      </div>
+
+      {/* Reference Chart */}
+      <div className="bg-slate-800 dark:bg-white rounded-xl border border-slate-700 dark:border-slate-200 p-6 mt-8">
+        <h3 className="text-xl font-bold text-white dark:text-slate-900 mb-4">📊 Referência Rápida - Padrões de Limpeza</h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-slate-700 dark:bg-slate-100 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-slate-400 dark:text-slate-600">St 3</div>
+            <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Limpeza Mecânica</div>
+            <div className="text-amber-400 text-xs mt-2">Mínimo aceito</div>
+          </div>
+          <div className="bg-slate-700 dark:bg-slate-100 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-slate-300 dark:text-slate-700">Sa 2</div>
+            <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Jato Comercial</div>
+            <div className="text-blue-400 text-xs mt-2">Uso geral</div>
+          </div>
+          <div className="bg-slate-700 dark:bg-slate-100 p-4 rounded-lg text-center border-2 border-green-500">
+            <div className="text-2xl font-bold text-white dark:text-slate-900">Sa 2½</div>
+            <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Metal Quase Branco</div>
+            <div className="text-green-400 text-xs mt-2">⭐ Mais usado</div>
+          </div>
+          <div className="bg-slate-700 dark:bg-slate-100 p-4 rounded-lg text-center">
+            <div className="text-2xl font-bold text-slate-100 dark:text-slate-800">Sa 3</div>
+            <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Metal Branco</div>
+            <div className="text-purple-400 text-xs mt-2">Alta exigência</div>
+          </div>
+        </div>
       </div>
     </div>
   );
